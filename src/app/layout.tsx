@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full w-full">
+    <html lang="en" className="w-full">
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden`,
@@ -37,7 +37,7 @@ export default function RootLayout({
       >
         <div
           className={cn(
-            "grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-full w-full p-8 pb-20 gap-16 sm:p-10 font-sans text-white",
+            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full p-8 pb-20 gap-16 sm:p-10 font-sans text-white",
           )}
         >
           <main
