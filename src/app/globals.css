@@ -102,6 +102,8 @@
 
   /* For Firefox */
   html {
+    color-scheme: dark;
+    background-color: #000000;
     scrollbar-width: thin; /* width of the scrollbar */
     scrollbar-color: #555 #1e1e1e; /* handle color, track color */
   }

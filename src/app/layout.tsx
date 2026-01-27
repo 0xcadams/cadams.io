@@ -21,6 +21,7 @@ const rockSalt = Rock_Salt({
 export const metadata: Metadata = {
   title: "Chase Adams",
   description: "Chase Adams",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

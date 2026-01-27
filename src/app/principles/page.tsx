@@ -29,7 +29,7 @@ export default function Home() {
           >
             <path d="M96,72a8,8,0,0,1,8-8A104.11,104.11,0,0,1,208,168a8,8,0,0,1-16,0,88.1,88.1,0,0,0-88-88A8,8,0,0,1,96,72ZM240,192H80V32a8,8,0,0,0-16,0V64H32a8,8,0,0,0,0,16H64V200a8,8,0,0,0,8,8H240a8,8,0,0,0,0-16Z"></path>
           </svg>
-          <span className="font-semibold">Principles</span>
+          <span className="font-semibold">Life Principles</span>
         </div>
         <Accordion.Root className="max-h-110 sm:max-h-140 overflow-y-auto" defaultValue={[principles[0].title]} type="multiple">
           <ol className="list-inside list-decimal space-y-3 text-sm text-left w-full">
