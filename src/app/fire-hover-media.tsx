@@ -11,15 +11,8 @@ type FireHoverMediaProps = {
 
 export function FireHoverMedia({ className }: FireHoverMediaProps) {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
-  const [isActive, setIsActive] = React.useState(false);
 
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsActive(true);
-    }, 6000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
+ 
 
   return (
     <>
@@ -43,7 +36,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             sizes="(min-width: 1024px) 768px, 100vw"
             quality={70}
           />
-          {isActive && (
+         
             <video
               ref={videoRef}
               muted
@@ -55,10 +48,10 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
               poster="/images/fire.png"
               className={cn(
                 "absolute inset-0 w-full h-full object-contain transition-all scale-[0.92] animate-fade-in motion-reduce:animate-none",
-                "filter brightness-50 contrast-[1.1] blur-2xl mix-blend-color-dodge",
+                "filter brightness-50 contrast-[1.1] blur-2xl mix-blend-color-dodge [animation-delay:4000ms]",
               )}
             />
-          )}
+         
         </div>
       </div>
     </>

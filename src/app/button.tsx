@@ -6,7 +6,7 @@ import { cn } from "./cn";
 import { useHotkeys } from "./use-hotkeys";
 
 const buttonVariants = cva(
-  "group relative inline-flex line-clamp-1 backdrop-blur-sm items-center justify-center whitespace-nowrap transition-all duration-500 hover:opacity-95 active:scale-[0.97] rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[disabled]:opacity-50",
+  "group relative inline-flex line-clamp-1 backdrop-blur-sm items-center justify-center whitespace-nowrap transition-all duration-500 hover:opacity-95 active:scale-[0.97] rounded-lg text-sm font-medium ring-offset-background transition-colors focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[disabled]:opacity-50",
   {
     variants: {
       variant: {
