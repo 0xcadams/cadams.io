@@ -30,16 +30,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full w-full">
-      <head>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </head>
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden`,
@@ -56,7 +46,7 @@ export default function RootLayout({
             )}
           >
             <div className="max-w-lg">{children}</div>
-            <FireHoverMedia  />
+            <FireHoverMedia />
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
             <a
