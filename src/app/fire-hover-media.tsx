@@ -37,6 +37,9 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             width={600}
             height={1200}
             preload
+            sizes="(min-width: 1024px) 768px, 100vw"
+            quality={70}
+            placeholder="blur"
           />
           <video
             ref={videoRef}
