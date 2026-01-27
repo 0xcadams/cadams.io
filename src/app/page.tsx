@@ -9,7 +9,7 @@ export default function Home() {
     <div className={cn("grid gap-10")}>
       <div className="flex group flex-col gap-6">
         <div className="flex gap-2 items-center">
-          <span className="text-amber-400/80 font-[family-name:var(--font-rock-salt)] ml-1">
+          <span className="text-lg text-amber-400/80 font-[family-name:var(--font-rock-salt)] ml-1">
             — Chase Adams
           </span>
         </div>
@@ -44,6 +44,12 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="flex items-center -my-6" aria-hidden="true">
+        <span className="text-xs leading-none text-amber-400/70 font-[family-name:var(--font-rock-salt)] ml-1 select-none">
+          ~ ~ ~
+        </span>
+      </div>
+
       <div className="flex group flex-col gap-6">
         <div>
           I love to spend time with my wife & family & friends & three dogs,
@@ -63,11 +69,11 @@ export default function Home() {
           <li>Waking Up (Sam Harris)</li>
         </ol>
         <div>
-          I also have{" "}
+          I also have a few{" "}
           <Link className={linkVariants()} href="/principles">
-            a few principles
-          </Link>{" "}
-          that I&apos;ve learned about myself.
+            life principles
+          </Link>
+          .
         </div>
       </div>
     </div>
