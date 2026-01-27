@@ -1,14 +1,21 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Rock_Salt } from "next/font/google";
 import { Button } from "./button";
 import { cn } from "./cn";
+import { FireHoverMedia } from "./fire-hover-media";
 import "./globals.css";
 
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["200", "300", "400", "500", "600", "700", "800"],
+});
+
+const rockSalt = Rock_Salt({
+  subsets: ["latin"],
+  variable: "--font-rock-salt",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -35,17 +42,22 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          `${sans.variable} antialiased`,
-          `transition-with-reduce bg-[length:610px] bg-repeat bg-[url("/images/noise.png")]`
+          `${sans.variable} ${rockSalt.variable} antialiased transition-with-reduce`,
         )}
       >
         <div
           className={cn(
-            "grid grid-rows-[20px_1fr_20px] max-w-2xl mx-auto items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-sans)]",
-            "text-white/90"
+            "grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-sans)] text-white",
           )}
         >
-          {children}
+          <main
+            className={cn(
+              "grid lg:grid-cols-[1.05fr_0.95fr] row-start-2 w-full gap-10 max-w-6xl",
+            )}
+          >
+            <div className="max-w-lg">{children}</div>
+            <FireHoverMedia />
+          </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
             <a
               className="flex items-center gap-2"
@@ -85,7 +97,7 @@ export default function RootLayout({
           />
 
           <svg
-            className="absolute right-4 -top-4 overflow-visible blur-lg pointer-events-none select-none -z-10"
+            className="absolute left-4 -top-8 overflow-visible blur-lg pointer-events-none select-none -z-10 scale-150"
             width="762"
             height="192"
             viewBox="0 0 762 192"
@@ -99,7 +111,7 @@ export default function RootLayout({
                   cy="-3.5"
                   rx="136"
                   ry="27.5"
-                  fill="white"
+                  className="fill-amber-300"
                   fillOpacity="0.6"
                 />
               </g>
@@ -109,8 +121,8 @@ export default function RootLayout({
                   cy="-3.5"
                   rx="136"
                   ry="27.5"
-                  fill="white"
                   fillOpacity="0.6"
+                  className="fill-amber-300"
                 />
               </g>
             </g>

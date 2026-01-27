@@ -3,15 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 body {
@@ -20,116 +13,36 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
- 
-
-  .masked-background {
-    mask:
-      linear-gradient(black, black) content-box content-box,
-      linear-gradient(black, black);
-    -webkit-mask:
-      linear-gradient(black, black) content-box content-box,
-      linear-gradient(black, black);
-    -webkit-mask-composite: xor;
-
-    mask-mode: match-source, match-source;
-    mask-repeat: repeat, repeat;
-    mask-clip: content-box, border-box;
-    mask-origin: content-box, border-box;
-    mask-position:
-      0% 0%,
-      0% 0%;
-    mask-size: auto, auto;
-    mask-image: linear-gradient(black, black), linear-gradient(black, black);
-    mask-composite: exclude;
-  }
- 
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 98%; /* #F9F9F9 */
-    --foreground: 0 0% 10%; /* #191919 */
-
-    --background-light: 0 0% 94%; /* #EFEFEF */
-
-    --muted: 0 0% 82%; /* #D1D1D1 */
-    --muted-foreground: 0 0% 30%; /* #4C4C4C */
-
-    --popover: 0 0% 95%; /* #F2F2F2 */
-    --popover-foreground: 0 0% 14%; /* #232323 */
-
-    --card: 0 0% 90%; /* #E5E5E5 */
-    --card-foreground: 0 0% 14%; /* #232323 */
-
-    --border: 0 0% 83%; /* #D3D3D3 */
-    --input: 0 0% 87%; /* #DDDDDD */
-
-    --primary: 167.3 61.5% 32.4%; /* #1F856F */
-    --primary-foreground: 0 0% 10%; /* #191919 */
-
-    --secondary: 272 51.3% 42.1%; /* #6F34A2 */
-    --secondary-foreground: 0 0% 10%; /* #191919 */
-
-    --accent: 0 0% 38%; /* #606060 */
-    --accent-foreground: 0 0% 10%; /* #191919 */
-
-    --success: 120 50% 47%; /* #3BB33B */
-    --success-foreground: 0 0% 20%; /* #333333 */
-
-    --destructive: 10 85% 56%; /* #EE4F2F */
-    --destructive-foreground: 0 0% 20%; /* #333333 */
-
-    --shadow: 0 0% 68%; /* #ADADAD */
-    --ring: 234 40% 62.8%; /* #7A81C6 */
-
-    --radius: 0.3rem;
-  }
-
-  .dark {
-    --background: 234 10% 3.4%; /* #070709 */
-    --foreground: 219 44% 92%; /* #e1e7f3 */
-
-    --background-light: 234 10% 7.2%; /* #101014 */
-
-    --muted: 212 10% 20%; /* #2d3238 */
-    --muted-foreground: 219 10% 76%; /* #bbbfc7 */
-
-    --popover: 234 10% 4.4%; /* #0a0a0c */
-    --popover-foreground: 219 44% 90%; /* #dae2f0 */
-
-    --card: 234 10% 8.4%; /* #131317 */
-    --card-foreground: 219 44% 90%; /* #dae2f0 */
-
-    --border: 212 10% 10%; /* #16191c */
-    --input: 212 10% 10%; /* #16191c */
-
-    --primary: 167 70.4% 72.1%; /* #85e9d4 */
-    --primary-foreground: 234 50% 10%; /* #0c0f26 */
-
-    --secondary: 234 50% 72.8%; /* #969ddc */
-    --secondary-foreground: 234 50% 10%; /* #0c0f26 */
-
-    --accent: 219 44% 92%; /* #e1e7f3 */
-    --accent-foreground: 219 44% 92%; /* #e1e7f3 */
-
-    --destructive: 10 85% 62.8%; /* #f06a4f */
-    --destructive-foreground: 234 50% 10%; /* #0c0f26 */
-
-    --shadow: 219 44% 92%; /* #e1e7f3 */
-    --ring: 234 40% 62.8%; /* #8186c7 */
-
-    --radius: 0.5rem;
-  }
-}
-
 @layer base {
   body {
     @apply bg-background text-foreground;
     font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+      "rlig" 1,
+      "calt" 1;
   }
+
+  @media (pointer: fine) {
+    html {
+      cursor:
+        url("/cursor-dot.svg") 4 4,
+        auto;
+    }
+
+    a[href],
+    button,
+    summary,
+    [role="button"],
+    [role="link"],
+    .cursor-pointer,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+      cursor:
+        url("/cursor-dot-pointer.svg") 6 6,
+        pointer;
+    }
+  }
+
   /* For WebKit browsers (Chrome, Safari) */
   ::-webkit-scrollbar {
     width: 10px; /* width of the scrollbar */

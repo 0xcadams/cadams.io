@@ -2,24 +2,17 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { outlineVariants } from "./outline";
 import { cn } from "./cn";
 import { useFormStatus } from "react-dom";
 import { useHotkeys } from "./use-hotkeys";
 
 const buttonVariants = cva(
-  "group relative inline-flex line-clamp-1 backdrop-blur-sm items-center justify-center whitespace-nowrap transition hover:opacity-95 active:scale-[0.97] rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[disabled]:opacity-50",
+  "group relative inline-flex line-clamp-1 backdrop-blur-sm items-center justify-center whitespace-nowrap transition-all duration-500 hover:opacity-95 active:scale-[0.97] rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[disabled]:opacity-50",
   {
     variants: {
       variant: {
-        default: "text-white bg-black/10 hover:bg-black/20",
-        primary: "text-white bg-white/5 hover:bg-white/10",
-        destructive: "text-white bg-input/10 hover:bg-input/20",
-        outline:
-          "ring-1 ring-inset ring-foreground/20 hover:bg-input/5 hover:text-accent-foreground",
-        secondary: "bg-input/10 hover:bg-input/20",
-        ghost: "bg-accent/[0.01] hover:bg-accent/5",
-        link: "bg-transparent underline-offset-4 hover:underline",
+        default:
+          "text-white bg-[linear-gradient(25deg,var(--tw-gradient-stops))] from-amber-700/0 via-amber-500/0 to-amber-300/0 hover:from-amber-700/20 hover:via-amber-500/20 hover:to-amber-300/20",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -38,11 +31,12 @@ const buttonVariants = cva(
       size: "default",
       loading: false,
     },
-  }
+  },
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   rightComponent?: React.ReactNode | null | undefined;
   leftComponent?: React.ReactNode | null | undefined;
@@ -61,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
       ...props
     },
-    ref
+    ref,
   ) => {
     const { pending: formPending } = useFormStatus();
 
@@ -81,22 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             loading: isDisabled,
             className,
           }),
-          variant !== "link"
-            ? outlineVariants({
-                variant:
-                  variant === "primary"
-                    ? "primary"
-                    : variant === "secondary"
-                    ? "secondary"
-                    : variant === "destructive"
-                    ? "destructive"
-                    : variant === "default"
-                    ? "default"
-                    : "none",
-                opacity: "interactive",
-              })
-            : "",
-          "inline-flex gap-2"
+          "inline-flex gap-2",
         )}
         disabled={isDisabled}
         aria-disabled={isDisabled}
@@ -107,14 +86,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
 
 function mergeRefs<T = unknown>(
-  refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>
+  refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>,
 ): React.RefCallback<T> {
   return (value) => {
     // biome-ignore lint/complexity/noForEach: <explanation>
