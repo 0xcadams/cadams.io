@@ -36,7 +36,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             draggable={false}
             width={600}
             height={1200}
-            priority
+            preload
           />
           <video
             ref={videoRef}
