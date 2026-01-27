@@ -44,55 +44,6 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex items-center -my-6 text-amber-400/70" aria-hidden="true">
-        <svg
-          className="ml-1 h-4 w-28"
-          viewBox="0 0 160 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path
-              d="M8 14C14 8 22 8 28 14C34 20 42 20 48 14"
-              strokeWidth="3"
-            />
-            <path
-              d="M56 14C62 8 70 8 76 14C82 20 90 20 96 14"
-              strokeWidth="3"
-            />
-            <path
-              d="M104 14C110 8 118 8 124 14C130 20 138 20 144 14"
-              strokeWidth="3"
-            />
-            <path
-              d="M7 15C14 10 21 9 28 15C35 21 42 20 49 15"
-              strokeWidth="1.75"
-              opacity="0.55"
-            />
-            <path
-              d="M55 15C62 10 69 9 76 15C83 21 90 20 97 15"
-              strokeWidth="1.75"
-              opacity="0.55"
-            />
-            <path
-              d="M103 15C110 10 117 9 124 15C131 21 138 20 145 15"
-              strokeWidth="1.75"
-              opacity="0.55"
-            />
-          </g>
-          <g fill="currentColor" opacity="0.55">
-            <circle cx="28" cy="6" r="1.25" />
-            <circle cx="76" cy="19" r="1" />
-            <circle cx="124" cy="6" r="1" />
-            <circle cx="144" cy="19" r="1.25" />
-          </g>
-        </svg>
-      </div>
-
       <div className="flex group flex-col gap-6">
         <div>
           I love to spend time with my wife & family & friends & three dogs,
