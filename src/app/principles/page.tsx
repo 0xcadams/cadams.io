@@ -20,7 +20,7 @@ export default function Home() {
       </Link>
 
       <main className="flex flex-col gap-4 row-start-2 w-full items-start">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
           <svg
             className="w-5 h-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export default function Home() {
           </svg>
           <span className="font-semibold">Life Principles</span>
         </div>
-        <Accordion.Root className="max-h-110 sm:max-h-140 overflow-y-auto" defaultValue={[principles[0].title]} type="multiple">
+        <Accordion.Root className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms]" defaultValue={[principles[0].title]} type="multiple">
           <ol className="list-inside list-decimal space-y-3 text-sm text-left w-full">
             {principles.map((principle) => (
               <Accordion.Item key={principle.title} value={principle.title}>
@@ -54,7 +54,7 @@ export default function Home() {
             ))}
           </ol>
         </Accordion.Root>
-        <div className="text-sm text-amber-400/80 font-(family-name:--font-rock-salt) mt-6 ml-1">
+        <div className="text-sm text-amber-400/80 font-(family-name:--font-rock-salt) mt-6 ml-1 animate-rise-in motion-reduce:animate-none [animation-delay:240ms]">
           ~ January 2026
         </div>
       </main>

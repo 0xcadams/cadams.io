@@ -6,6 +6,7 @@
   --color-ring: var(--color-amber-300);
 
   --animate-fade-in: fade-in 1000ms ease-out both;
+  --animate-rise-in: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 
   --animate-accordion-down: accordion-down 0.13s ease-in;
   --animate-accordion-up: accordion-up 0.13s ease-in;
@@ -16,6 +17,19 @@
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+      filter: blur(0px);
     }
   }
 
