@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="w-full">
+    <html lang="en" className="h-screen-safe w-full">
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden`,

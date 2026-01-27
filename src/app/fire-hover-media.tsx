@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { cn } from "./cn";
+import fire from "../../public/images/fire.png";
 
 type FireHoverMediaProps = {
   className?: string;
@@ -31,7 +32,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
         <div className="relative w-full pointer-events-none select-none aspect-3/4 opacity-50 lg:opacity-100 transition-opacity duration-1000">
           <Image
             alt="Fire"
-            src="/images/fire.png"
+            src={fire}
             className={cn("absolute inset-0 w-full h-full object-contain")}
             draggable={false}
             width={600}
@@ -39,7 +40,6 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             preload
             sizes="(min-width: 1024px) 768px, 100vw"
             quality={70}
-            placeholder="blur"
           />
           <video
             ref={videoRef}

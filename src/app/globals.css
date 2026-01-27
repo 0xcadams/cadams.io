@@ -47,28 +47,10 @@
 }
 
 @layer base {
-  /*
-   * iOS Safari treats `100%`/`100vh` as the *layout* viewport height (includes
-   * browser chrome), which can cause full-height layouts to be clipped or
-   * scroll unexpectedly.
-   *
-   * Our `<html>` element uses Tailwind's `h-full`, so we override that utility
-   * with a more specific selector.
-   */
-  html.h-full {
+  .h-screen-safe {
     height: 100%;
-  }
-
-  @supports (height: 100dvh) {
-    html.h-full {
-      height: 100dvh;
-    }
-  }
-
-  @supports (-webkit-touch-callout: none) and (not (height: 100dvh)) {
-    html.h-full {
-      height: -webkit-fill-available;
-    }
+    height: 100vh;
+    height: 100dvh;
   }
 
   body {
