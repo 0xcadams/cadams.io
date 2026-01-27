@@ -1,21 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #000000;
-  --foreground: #ededed;
-}
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ededed;
+  --color-ring: var(--color-amber-300);
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  --animate-fade-in: fade-in 1000ms ease-out both;
+
+  --animate-accordion-down: accordion-down 0.13s ease-in;
+  --animate-accordion-up: accordion-up 0.13s ease-in;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0px;
+      opacity: 0;
+      filter: blur(5px);
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-collapsible-content-height);
+      opacity: 1;
+      filter: blur(0px);
+    }
+    to {
+      height: 0px;
+      opacity: 0;
+      filter: blur(5px);
+    }
+  }
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;

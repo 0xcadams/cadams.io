@@ -3,7 +3,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "./cn";
-import { useFormStatus } from "react-dom";
 import { useHotkeys } from "./use-hotkeys";
 
 const buttonVariants = cva(
@@ -12,7 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-white bg-[linear-gradient(25deg,var(--tw-gradient-stops))] from-amber-700/0 via-amber-500/0 to-amber-300/0 hover:from-amber-700/20 hover:via-amber-500/20 hover:to-amber-300/20",
+          "text-white bg-radial-[at_50%_75%] from-amber-700/10 via-amber-500/10 to-amber-300/10 hover:from-amber-700/20 hover:via-amber-500/20 hover:to-amber-300/20",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -44,26 +43,14 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      className,
-      variant = "default",
-      size,
-
-      disabled,
-
-      children,
-
-      ...props
-    },
+    { className, variant = "default", size, disabled, children, ...props },
     ref,
   ) => {
-    const { pending: formPending } = useFormStatus();
-
     const localRef = React.useRef<HTMLButtonElement | null>(null);
     const mergedRef = mergeRefs([ref, localRef]);
     useHotkeys(localRef.current);
 
-    const isDisabled = Boolean(formPending || disabled);
+    const isDisabled = Boolean(disabled);
 
     return (
       <button

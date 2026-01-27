@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full w-full">
       <head>
         <link
           rel="icon"
@@ -42,12 +42,12 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          `${sans.variable} ${rockSalt.variable} antialiased transition-with-reduce`,
+          `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden`,
         )}
       >
         <div
           className={cn(
-            "grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-sans)] text-white",
+            "grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-full w-full p-8 pb-20 gap-16 sm:p-10 font-sans text-white",
           )}
         >
           <main
@@ -56,7 +56,7 @@ export default function RootLayout({
             )}
           >
             <div className="max-w-lg">{children}</div>
-            <FireHoverMedia />
+            <FireHoverMedia  />
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
             <a
@@ -97,9 +97,9 @@ export default function RootLayout({
           />
 
           <svg
-            className="absolute left-4 -top-8 overflow-visible blur-lg pointer-events-none select-none -z-10 scale-150"
-            width="762"
-            height="192"
+            className="absolute hidden md:flex left-1/2 -translate-x-1/2 translate-y-32 bottom-0 overflow-visible blur-xl pointer-events-none select-none -z-10 rotate-180"
+            width="1150"
+            height="300"
             viewBox="0 0 762 192"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ export default function RootLayout({
                   cy="-3.5"
                   rx="136"
                   ry="27.5"
-                  className="fill-amber-300"
+                  className="fill-amber-500"
                   fillOpacity="0.6"
                 />
               </g>
@@ -122,7 +122,7 @@ export default function RootLayout({
                   rx="136"
                   ry="27.5"
                   fillOpacity="0.6"
-                  className="fill-amber-300"
+                  className="fill-amber-500"
                 />
               </g>
             </g>
@@ -170,7 +170,7 @@ export default function RootLayout({
                 />
               </filter>
               <clipPath id="clip0_1_22">
-                <rect width="762" height="192" fill="white" />
+                <rect width="762" height="192" className="fill-amber-500" />
               </clipPath>
             </defs>
           </svg>

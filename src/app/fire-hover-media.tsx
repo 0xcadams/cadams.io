@@ -12,15 +12,23 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const [isActive, setIsActive] = React.useState(false);
 
+  React.useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsActive(true);
+    }, 4000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <>
       <div
         className={cn(
-          "absolute right-0 top-1/2 w-full max-w-3xl -translate-y-1/2 -z-10 pointer-events-none",
+          "absolute pointer-events-none select-none right-0 top-1/2 w-full max-w-3xl -translate-y-1/2 -z-10 animate-fade-in motion-reduce:animate-none",
           className,
         )}
       >
-        <div className="relative w-full aspect-[3/4]">
+        <div className="relative w-full pointer-events-none select-none aspect-3/4 opacity-50 lg:opacity-100 transition-opacity duration-1000">
           <Image
             alt="Fire"
             src="/images/fire.png"
@@ -28,6 +36,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             draggable={false}
             width={600}
             height={1200}
+            priority
           />
           <video
             ref={videoRef}
@@ -36,25 +45,14 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             autoPlay
             playsInline
             preload="auto"
-            src="/images/fire.mp4"
+            src="/images/fire-1.mp4"
             poster="/images/fire.png"
             className={cn(
-              "absolute inset-0 w-full h-full object-contain transition-all duration-[3000ms] ease-in-out scale-[0.92]",
+              "absolute inset-0 w-full h-full object-contain transition-all duration-3000ms ease-in-out scale-[0.92]",
               isActive ? "opacity-100" : "opacity-0",
             )}
           />
         </div>
-      </div>
-
-      <div
-        className={cn(
-          "absolute right-0 top-1/2 w-full max-w-3xl -translate-y-1/2 z-10",
-          className,
-        )}
-        onMouseEnter={() => setIsActive(true)}
-        onMouseLeave={() => setIsActive(false)}
-      >
-        <div className="w-full aspect-[3/4]" />
       </div>
     </>
   );

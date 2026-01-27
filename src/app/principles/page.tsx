@@ -31,7 +31,7 @@ export default function Home() {
           </svg>
           <span className="font-semibold">Principles</span>
         </div>
-        <Accordion.Root defaultValue={[principles[0].title]} type="multiple">
+        <Accordion.Root className="max-h-140 overflow-y-auto" defaultValue={[principles[0].title]} type="multiple">
           <ol className="list-inside list-decimal space-y-3 text-sm text-left w-full">
             {principles.map((principle) => (
               <Accordion.Item key={principle.title} value={principle.title}>
@@ -54,7 +54,7 @@ export default function Home() {
             ))}
           </ol>
         </Accordion.Root>
-        <div className="text-xs text-amber-400/80 font-[family-name:var(--font-rock-salt)] mt-6 ml-1">
+        <div className="text-sm text-amber-400/80 font-(family-name:--font-rock-salt) mt-6 ml-1">
           ~ January 2026
         </div>
       </main>
