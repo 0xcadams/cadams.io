@@ -9,7 +9,7 @@ export default function Home() {
     <div className={cn("grid gap-10")}>
       <div className="flex group flex-col gap-6">
         <div className="flex gap-2 items-center">
-          <span className="text-lg text-amber-400/80 font-[family-name:var(--font-rock-salt)] ml-1 animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
+          <span className="text-lg text-amber-400/80 font-(family-name:--font-rock-salt) ml-1 animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
             — Chase Adams
           </span>
         </div>
@@ -36,7 +36,7 @@ export default function Home() {
 
           <div className="animate-rise-in motion-reduce:animate-none [animation-delay:240ms]">
             I am fascinated by{" "}
-            <span className="text-sm text-amber-400 font-[family-name:var(--font-rock-salt)]">
+            <span className="text-sm text-amber-400 font-(family-name:--font-rock-salt)">
               Quality
             </span>{" "}
             in the craft of engineering, product design, sync engines, and AI.
@@ -45,9 +45,13 @@ export default function Home() {
       </div>
 
       <div className="flex group flex-col gap-6">
+        <span className="text-sm text-amber-400 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:300ms]">
+          {"~ What keeps me grounded;"}
+        </span>
+
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:360ms]">
           I love to spend time with my wife & family & friends & three dogs,
-          write software, explore new ideas, travel, ski, run, and read.
+          explore new ideas, travel, run, ski, and read.
         </div>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:440ms]">

@@ -16,7 +16,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsActive(true);
-    }, 4000);
+    }, 6000);
 
     return () => clearTimeout(timeoutId);
   }, []);
@@ -25,7 +25,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
     <>
       <div
         className={cn(
-          "absolute pointer-events-none select-none right-0 top-1/2 w-full max-w-3xl -translate-y-1/2 -z-10 animate-fade-in motion-reduce:animate-none",
+          "absolute pointer-events-none select-none right-0 xl:right-16 2xl:right-24 top-1/2 w-full max-w-3xl -translate-y-1/2 transition-all -z-10 animate-fade-in motion-reduce:animate-none [animation-delay:400ms]",
           className,
         )}
       >
@@ -33,7 +33,9 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
           <Image
             alt="Fire"
             src={fire}
-            className={cn("absolute inset-0 w-full h-full object-contain")}
+            className={cn(
+              "absolute inset-0 w-full h-full object-contain filter contrast-[1.1] sepia-[0.2]",
+            )}
             draggable={false}
             width={600}
             height={1200}
@@ -41,20 +43,22 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             sizes="(min-width: 1024px) 768px, 100vw"
             quality={70}
           />
-          <video
-            ref={videoRef}
-            muted
-            loop
-            autoPlay
-            playsInline
-            preload="auto"
-            src="/images/fire-1.mp4"
-            poster="/images/fire.png"
-            className={cn(
-              "absolute inset-0 w-full h-full object-contain transition-all duration-3000ms ease-in-out scale-[0.92]",
-              isActive ? "opacity-100" : "opacity-0",
-            )}
-          />
+          {isActive && (
+            <video
+              ref={videoRef}
+              muted
+              loop
+              autoPlay
+              playsInline
+              preload="auto"
+              src="/images/fire-1.mp4"
+              poster="/images/fire.png"
+              className={cn(
+                "absolute inset-0 w-full h-full object-contain transition-all scale-[0.92] animate-fade-in motion-reduce:animate-none",
+                "filter brightness-50 contrast-[1.1] blur-2xl mix-blend-color-dodge",
+              )}
+            />
+          )}
         </div>
       </div>
     </>
