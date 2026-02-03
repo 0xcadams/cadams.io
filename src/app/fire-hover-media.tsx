@@ -41,6 +41,8 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             loop
             autoPlay
             playsInline
+            webkit-playsinline="true"
+            controls={false}
             preload="auto"
             src="/images/fire-aidf7.mp4"
             poster="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffire.1b70983e.png&w=1920&q=75&dpl=dpl_H6eUFj4U9tW4q9xYqXEUrR6LS3aP"
