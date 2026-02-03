@@ -3,14 +3,22 @@
 import Link from "next/link";
 import { cn } from "./cn";
 import { linkVariants } from "./link";
+import Image from "next/image";
+import headshot from "./headshot.jpg";
 
 export default function Home() {
   return (
-    <div className={cn("grid gap-10")}>
+    <div className="grid gap-10">
       <div className="flex group flex-col gap-6">
         <div className="flex gap-2 items-center">
-          <span className="text-lg text-amber-400/80 font-(family-name:--font-rock-salt) ml-1 animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
-            — Chase Adams
+          <span className="flex gap-4 w-full items-center text-lg text-amber-400/80 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
+            <span>Chase Adams</span>
+            <Image
+              src={headshot}
+              alt="Chase Adams"
+              width={140}
+              className="rounded-full saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:780ms]"
+            />
           </span>
         </div>
         <div className="flex flex-col gap-6 items-start">
@@ -46,7 +54,7 @@ export default function Home() {
 
       <div className="flex group flex-col gap-6">
         <span className="text-sm text-amber-400 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:300ms]">
-          {"~ What keeps me grounded;"}
+          {"— What keeps me grounded;"}
         </span>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:360ms]">

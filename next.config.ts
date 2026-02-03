@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/images/fire-1.mp4",
+        source: "/images/:name*.mp4",
         headers: [
           {
             key: "Cache-Control",
