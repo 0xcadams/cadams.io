@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { cn } from "./cn";
 import { linkVariants } from "./link";
 import Image from "next/image";
 import headshot from "./headshot.jpg";
@@ -58,8 +57,8 @@ export default function Home() {
         </span>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:360ms]">
-          I love to spend time with my wife & family & friends & three dogs,
-          explore new ideas, travel, run, ski, and read.
+          I love to spend time with my wife & family & friends & dogs, explore
+          new ideas, travel, run, ski, and read.
         </div>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:440ms]">
