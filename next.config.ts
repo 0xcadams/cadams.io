@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  allowedDevOrigins: ["macbook.cormo-turtle.ts.net"],
   async headers() {
     return [
       {

@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Rock_Salt } from "next/font/google";
 import { Button } from "./button";
 import { cn } from "./cn";
@@ -21,6 +21,10 @@ const rockSalt = Rock_Salt({
 export const metadata: Metadata = {
   title: "Chase Adams",
   description: "Chase Adams",
+  metadataBase: new URL("https://cadams.io"),
+};
+
+export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
