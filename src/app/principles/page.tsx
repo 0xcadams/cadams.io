@@ -23,10 +23,10 @@ export default function Home() {
           >
             <path d="M96,72a8,8,0,0,1,8-8A104.11,104.11,0,0,1,208,168a8,8,0,0,1-16,0,88.1,88.1,0,0,0-88-88A8,8,0,0,1,96,72ZM240,192H80V32a8,8,0,0,0-16,0V64H32a8,8,0,0,0,0,16H64V200a8,8,0,0,0,8,8H240a8,8,0,0,0,0-16Z"></path>
           </svg>
-          <span className="font-semibold">Life Principles</span>
+          <span className="font-semibold">Principles</span>
         </div>
         <Accordion.Root
-          className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms]"
+          className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms] transition-all"
           defaultValue={principles[0].title}
           type="single"
         >
@@ -41,7 +41,7 @@ export default function Home() {
                 >
                   <li role="button">{principle.title}</li>
                 </Accordion.Trigger>
-                <Accordion.Content className="pt-2 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                <Accordion.Content className="pt-2 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all">
                   <div className="flex flex-col gap-1">
                     <span className="text-sm text-white/80">
                       {principle.description}

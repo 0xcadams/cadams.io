@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden relative`,
-          "bg-linear-82 from-[#fbbf24]/5 via-16% lg:via-20% xl:via-24% via-[#fbbf24]/1 to-35% to-transparent",
+          "bg-linear-82 from-[#f59e0b]/7 via-16% lg:via-20% xl:via-24% via-[#ea580c]/2 to-35% to-transparent",
         )}
       >
         <div

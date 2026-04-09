@@ -9,8 +9,8 @@
   --animate-rise-in: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fire-flicker: fire-flicker 42000ms ease-in-out infinite;
 
-  --animate-accordion-down: accordion-down 0.13s ease-in;
-  --animate-accordion-up: accordion-up 0.13s ease-in;
+  --animate-accordion-down: accordion-down 0.14s ease-in;
+  --animate-accordion-up: accordion-up 0.04s ease-in;
 
   @keyframes fade-in {
     from {
