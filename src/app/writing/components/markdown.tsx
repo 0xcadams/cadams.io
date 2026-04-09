@@ -24,7 +24,9 @@ const components: Components = {
       {children}
     </h3>
   ),
-  p: ({ children }) => <p className="mt-6 leading-7 text-white/80">{children}</p>,
+  p: ({ children }) => (
+    <p className="mt-6 leading-7 text-white/80">{children}</p>
+  ),
   a: ({ children, href }) => {
     const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
 
@@ -66,14 +68,14 @@ const components: Components = {
     return (
       <img
         alt={alt ?? ""}
-        className="mt-8 w-full rounded-xl border border-white/10 opacity-80 object-cover shadow-[0_0_48px_rgba(251,191,36,0.32)]"
+        className="mt-8 w-full rounded-lg border border-white/10 opacity-80 object-cover shadow-[0_0_48px_rgba(251,191,36,0.32)]"
         src={src}
       />
     );
   },
   hr: () => <hr className="mt-10 border-white/10" />,
   pre: ({ children }) => (
-    <pre className="mt-6 overflow-x-auto rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/90">
+    <pre className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/90">
       {children}
     </pre>
   ),

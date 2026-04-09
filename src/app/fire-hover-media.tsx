@@ -21,7 +21,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
           className,
         )}
       >
-        <div className="relative w-full pointer-events-none select-none aspect-3/4 opacity-25 lg:opacity-100 transition-opacity duration-1000">
+        <div className="relative w-full pointer-events-none select-none aspect-3/4 blur-[2px] lg:blur-none opacity-25 lg:opacity-100 transition-all duration-4000">
           <Image
             alt="Fire"
             src={fire}
