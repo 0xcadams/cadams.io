@@ -104,7 +104,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply text-foreground font-sans;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
@@ -167,5 +167,26 @@
     color-scheme: dark;
     scrollbar-width: thin; /* width of the scrollbar */
     scrollbar-color: #555 #1e1e1e; /* handle color, track color */
+  }
+
+  ::view-transition-group(.writing-title-share),
+  ::view-transition-old(.writing-title-share),
+  ::view-transition-new(.writing-title-share) {
+    animation-duration: 420ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+ 
+
+  ::view-transition-image-pair(.writing-title-share) {
+    isolation: auto;
+  }
+ 
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(.writing-title-share),
+    ::view-transition-old(.writing-title-share),
+    ::view-transition-new(.writing-title-share) {
+      animation-duration: 1ms;
+    }
   }
 }

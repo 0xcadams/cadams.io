@@ -2,6 +2,20 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  allowedDevOrigins: ["macbook.cormo-turtle.ts.net"],
+  experimental: {
+    viewTransition: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: "/ideas-and-execution",
+        destination: "/writing/ideas-and-execution",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

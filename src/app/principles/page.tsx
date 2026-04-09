@@ -1,9 +1,7 @@
 "use client";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import { ArrowLeftIcon } from "lucide-react";
-import Link from "next/link";
-import { Button } from "../button";
+import { BackButton } from "../back-button";
 import { cn } from "../cn";
 
 const BoldedText = ({ children }: { children: React.ReactNode }) => {
@@ -13,11 +11,7 @@ const BoldedText = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <>
-      <Link className="absolute top-4 left-4 items-center gap-2" href="/">
-        <Button size="sm">
-          <ArrowLeftIcon className="w-4 h-4" /> Back
-        </Button>
-      </Link>
+      <BackButton href="/" />
 
       <main className="flex flex-col gap-4 row-start-2 w-full items-start">
         <div className="flex gap-2 items-center animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">

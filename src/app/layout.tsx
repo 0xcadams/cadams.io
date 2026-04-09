@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Rock_Salt } from "next/font/google";
 import { Button } from "./button";
 import { cn } from "./cn";
@@ -21,6 +21,10 @@ const rockSalt = Rock_Salt({
 export const metadata: Metadata = {
   title: "Chase Adams",
   description: "Chase Adams",
+  metadataBase: new URL("https://cadams.io"),
+};
+
+export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
@@ -30,15 +34,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-screen-safe w-full">
+    <html lang="en" className="h-screen-safe w-full bg-black">
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden relative`,
+          "bg-linear-82 from-[#fbbf24]/5 via-16% lg:via-20% xl:via-24% via-[#fbbf24]/1 to-35% to-transparent",
         )}
       >
         <div
           className={cn(
-            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full p-8 gap-16 sm:p-10 font-sans text-white",
+            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full py-8 px-12 gap-16 sm:py-10 sm:px-20 lg:px-28 font-sans text-white",
           )}
         >
           <main
@@ -90,7 +95,7 @@ export default function RootLayout({
 
         <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 blur pointer-events-none select-none -z-10 animate-rise-in [animation-delay:4700ms] max-w-150 w-full">
           <svg
-            className="w-full"
+            className="w-full opacity-70"
             viewBox="0 0 762 192"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
