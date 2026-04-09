@@ -32,6 +32,7 @@ export function FireHoverMedia({ className }: FireHoverMediaProps) {
             width={600}
             height={1200}
             preload
+            loading="eager"
             sizes="(min-width: 1024px) 768px, 100vw"
           />
 
