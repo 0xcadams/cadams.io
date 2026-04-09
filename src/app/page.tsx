@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-6 items-start">
           <div className="animate-rise-in motion-reduce:animate-none [animation-delay:140ms]">
-            I am a builder and an optimist; partner at{" "}
+            I am an engineer and an optimist; partner at{" "}
             <a
               className={linkVariants()}
               target="_blank"
