@@ -16,6 +16,8 @@ export default function Home() {
               src={headshot}
               alt="Chase Adams"
               width={140}
+              preload
+              loading="eager"
               className="rounded-lg saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:40ms]"
             />
           </span>
