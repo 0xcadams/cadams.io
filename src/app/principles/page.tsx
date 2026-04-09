@@ -25,7 +25,11 @@ export default function Home() {
           </svg>
           <span className="font-semibold">Life Principles</span>
         </div>
-        <Accordion.Root className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms]" defaultValue={[principles[0].title]} type="multiple">
+        <Accordion.Root
+          className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms]"
+          defaultValue={principles[0].title}
+          type="single"
+        >
           <ol className="list-inside list-decimal space-y-3 text-sm text-left w-full">
             {principles.map((principle) => (
               <Accordion.Item key={principle.title} value={principle.title}>
