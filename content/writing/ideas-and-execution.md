@@ -5,9 +5,7 @@ date: "2024-04-29"
 image: https://cdn.0xcadams.com/IMG_20190621_115841_resized.jpeg
 ---
 
-![Sol LeWitt wall drawing](https://cdn.0xcadams.com/IMG_20190621_115841_resized.jpeg)
-
-On the relationship between the ideas that drive creation and the creation itself:
+![Sol LeWitt wall drawing](/images/content/ideas-and-execution.jpg)
 
 Almost five years ago, I went to the Massachusetts Museum of Contemporary Art (MASS MoCa) and saw Sol LeWitt's installation there. He had created over 100 wall drawings across 27,000 square feet of space, made of three stories of narrow hallways and expansive rooms with drawings on all sides. The work is driven by shapes and lines; there was mathematical rigor to every drawing, inspired by geometry and simple rules. They are accompanied by a short description:
 

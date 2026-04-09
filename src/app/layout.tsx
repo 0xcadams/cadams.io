@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         <div
           className={cn(
-            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full p-8 gap-16 sm:p-10 font-sans text-white",
+            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full py-8 px-12 gap-16 sm:py-10 sm:px-20 lg:px-28 font-sans text-white",
           )}
         >
           <main

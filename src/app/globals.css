@@ -168,4 +168,37 @@
     scrollbar-width: thin; /* width of the scrollbar */
     scrollbar-color: #555 #1e1e1e; /* handle color, track color */
   }
+
+  ::view-transition-group(.writing-title-share),
+  ::view-transition-old(.writing-title-share),
+  ::view-transition-new(.writing-title-share) {
+    animation-duration: 420ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-group(.writing-date-share),
+  ::view-transition-old(.writing-date-share),
+  ::view-transition-new(.writing-date-share) {
+    animation-duration: 360ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-image-pair(.writing-title-share) {
+    isolation: auto;
+  }
+
+  ::view-transition-image-pair(.writing-date-share) {
+    isolation: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(.writing-title-share),
+    ::view-transition-old(.writing-title-share),
+    ::view-transition-new(.writing-title-share),
+    ::view-transition-group(.writing-date-share),
+    ::view-transition-old(.writing-date-share),
+    ::view-transition-new(.writing-date-share) {
+      animation-duration: 1ms;
+    }
+  }
 }

@@ -1,34 +1,34 @@
+import matter from "gray-matter";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 
-const BLOG_DIRECTORY = path.join(process.cwd(), "content", "blog");
+const BLOG_DIRECTORY = path.join(process.cwd(), "content", "writing");
 
-type BlogFrontmatter = {
+type WritingFrontmatter = {
   title: string;
   description: string;
   date?: string;
   image?: string;
 };
 
-export type BlogPost = BlogFrontmatter & {
+export type WritingPost = WritingFrontmatter & {
   content: string;
   slug: string[];
   href: string;
 };
 
-type BlogFile = {
+type WritingFile = {
   filePath: string;
   modifiedAt: number;
 };
 
-type ParsedBlogPost = BlogPost & {
+type ParsedWritingPost = WritingPost & {
   modifiedAt: number;
 };
 
-export async function getAllPosts(): Promise<BlogPost[]> {
+export async function getAllPosts(): Promise<WritingPost[]> {
   const files = await getMarkdownFiles(BLOG_DIRECTORY);
-  const posts = await Promise.all(files.map(readBlogPost));
+  const posts = await Promise.all(files.map(readWritingPost));
 
   return posts
     .sort((left, right) => getSortTimestamp(right) - getSortTimestamp(left))
@@ -40,12 +40,12 @@ export async function getAllPostSlugs(): Promise<string[][]> {
   return posts.map((post) => post.slug);
 }
 
-export async function getPostBySlug(slug: string[]): Promise<BlogPost | null> {
+export async function getPostBySlug(slug: string[]): Promise<WritingPost | null> {
   const posts = await getAllPosts();
   return posts.find((post) => post.slug.join("/") === slug.join("/")) ?? null;
 }
 
-export function formatBlogDate(date: string): string {
+export function formatWritingDate(date: string): string {
   const timestamp = getDateTimestamp(date);
 
   if (timestamp === null) {
@@ -60,7 +60,7 @@ export function formatBlogDate(date: string): string {
   }).format(timestamp);
 }
 
-async function getMarkdownFiles(directory: string): Promise<BlogFile[]> {
+async function getMarkdownFiles(directory: string): Promise<WritingFile[]> {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   const files = await Promise.all(
     entries.map(async (entry) => {
@@ -82,7 +82,7 @@ async function getMarkdownFiles(directory: string): Promise<BlogFile[]> {
   return files.flat();
 }
 
-async function readBlogPost(file: BlogFile): Promise<ParsedBlogPost> {
+async function readWritingPost(file: WritingFile): Promise<ParsedWritingPost> {
   const fileContents = await fs.readFile(file.filePath, "utf8");
   const { content, data } = matter(fileContents);
 
@@ -96,7 +96,7 @@ async function readBlogPost(file: BlogFile): Promise<ParsedBlogPost> {
     content,
     date: getOptionalDateField(data, "date", file.filePath),
     description: getRequiredField(data, "description", file.filePath),
-    href: `/blog/${slug.map(encodeURIComponent).join("/")}`,
+    href: `/writing/${slug.map(encodeURIComponent).join("/")}`,
     image: getOptionalField(data, "image", file.filePath),
     modifiedAt: file.modifiedAt,
     slug,

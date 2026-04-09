@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { linkVariants } from "./link";
 import Image from "next/image";
+import Link from "next/link";
 import headshot from "./headshot.jpg";
+import { linkVariants } from "./link";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
               src={headshot}
               alt="Chase Adams"
               width={140}
-              className="rounded-full saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:780ms]"
+              className="rounded-lg saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:40ms]"
             />
           </span>
         </div>
@@ -80,8 +80,8 @@ export default function Home() {
           <Link className={linkVariants()} href="/principles">
             principles
           </Link>
-          , and{" "}
-          <Link className={linkVariants()} href="/blog">
+          {", and I "}
+          <Link className={linkVariants()} href="/writing">
             write occasionally
           </Link>
           .

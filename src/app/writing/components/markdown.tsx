@@ -66,7 +66,7 @@ const components: Components = {
     return (
       <img
         alt={alt ?? ""}
-        className="mt-8 w-full rounded-3xl border border-white/10 object-cover shadow-[0_16px_50px_rgba(0,0,0,0.35)]"
+        className="mt-8 w-full rounded-xl border border-white/10 opacity-80 object-cover shadow-[0_0_48px_rgba(251,191,36,0.32)]"
         src={src}
       />
     );
