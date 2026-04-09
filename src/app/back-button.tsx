@@ -1,7 +1,9 @@
+"use client";
+
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
-import { buttonVariants } from "./button-variants";
+import { Button } from "./button";
 import { cn } from "./cn";
 
 type BackButtonProps = Omit<
@@ -21,16 +23,13 @@ export function BackButton({
 }: BackButtonProps) {
   return (
     <Link
-      className={cn(
-        buttonVariants({ size: "sm" }),
-        "absolute top-4 left-4 gap-2",
-        className,
-      )}
+      className={cn("absolute top-4 left-4 items-center gap-2", className)}
       href={href}
       {...props}
     >
-      <ArrowLeftIcon className="h-4 w-4" />
-      {children}
+      <Button size="sm">
+        <ArrowLeftIcon className="h-4 w-4" /> {children}
+      </Button>
     </Link>
   );
 }
