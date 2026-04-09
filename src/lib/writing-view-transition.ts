@@ -5,7 +5,3 @@ function getWritingTransitionSlugId(slug: string[]): string {
 export function getWritingTitleTransitionName(slug: string[]): string {
   return `writing-title-${getWritingTransitionSlugId(slug)}`;
 }
-
-export function getWritingDateTransitionName(slug: string[]): string {
-  return `writing-date-${getWritingTransitionSlugId(slug)}`;
-}

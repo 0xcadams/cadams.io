@@ -1,8 +1,5 @@
 import { formatWritingDate, getAllPosts } from "@/lib/writing";
-import {
-  getWritingDateTransitionName,
-  getWritingTitleTransitionName,
-} from "@/lib/writing-view-transition";
+import { getWritingTitleTransitionName } from "@/lib/writing-view-transition";
 import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -52,15 +49,9 @@ export default async function WritingPagePage() {
                       </span>
                     </ViewTransition>
                     {post.date ? (
-                      <ViewTransition
-                        default="none"
-                        name={getWritingDateTransitionName(post.slug)}
-                        share="writing-date-share"
-                      >
-                        <p className="ml-3 my-1 text-xs text-amber-400/80 font-(family-name:--font-rock-salt)">
-                          ~ {formatWritingDate(post.date)}
-                        </p>
-                      </ViewTransition>
+                      <p className="ml-3 my-1 text-xs text-amber-400/80 font-(family-name:--font-rock-salt)">
+                        ~ {formatWritingDate(post.date)}
+                      </p>
                     ) : null}
                   </Link>
                 </li>

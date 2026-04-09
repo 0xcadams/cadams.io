@@ -4,8 +4,7 @@ import {
   getPostBySlug,
 } from "@/lib/writing";
 import {
-  getWritingDateTransitionName,
-  getWritingTitleTransitionName,
+  getWritingTitleTransitionName
 } from "@/lib/writing-view-transition";
 import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
@@ -59,7 +58,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
-      <Link className="absolute top-4 left-4 items-center gap-2" href="/writing">
+      <Link
+        className="absolute top-4 left-4 items-center gap-2"
+        href="/writing"
+      >
         <Button size="sm">
           <ArrowLeftIcon className="h-4 w-4" /> Back
         </Button>
@@ -80,15 +82,9 @@ export default async function PostPage({ params }: PostPageProps) {
             <p className="text-white/70 leading-7">{post.description}</p>
           </div>
           {post.date ? (
-            <ViewTransition
-              default="none"
-              name={getWritingDateTransitionName(post.slug)}
-              share="writing-date-share"
-            >
-              <p className="ml-3 text-xs text-amber-400/80 font-(family-name:--font-rock-salt)">
-                ~ {formatWritingDate(post.date)}
-              </p>
-            </ViewTransition>
+            <p className="ml-3 text-xs text-amber-400/80 animate-rise-in motion-reduce:animate-none [animation-delay:60ms] font-(family-name:--font-rock-salt)">
+              ~ {formatWritingDate(post.date)}
+            </p>
           ) : null}
         </div>
 
