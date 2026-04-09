@@ -1,10 +1,9 @@
 import { formatWritingDate, getAllPosts } from "@/lib/writing";
 import { getWritingTitleTransitionName } from "@/lib/writing-view-transition";
-import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ViewTransition } from "react";
-import { Button } from "../button";
+import { BackButton } from "../back-button";
 import { cn } from "../cn";
 import { linkVariants } from "../link";
 
@@ -18,11 +17,7 @@ export default async function WritingPagePage() {
 
   return (
     <>
-      <Link className="absolute top-4 left-4 items-center gap-2" href="/">
-        <Button size="sm">
-          <ArrowLeftIcon className="h-4 w-4" /> Back
-        </Button>
-      </Link>
+      <BackButton href="/" />
 
       <main className="flex w-full flex-col items-start gap-8 row-start-2">
         <div className="w-full overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">

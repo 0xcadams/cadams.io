@@ -34,10 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-screen-safe w-full">
+    <html lang="en" className="h-screen-safe w-full bg-black">
       <body
         className={cn(
           `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden relative`,
+          "bg-linear-82 from-[#fbbf24]/5 via-16% lg:via-20% xl:via-24% via-[#fbbf24]/1 to-35% to-transparent",
         )}
       >
         <div
@@ -94,7 +95,7 @@ export default function RootLayout({
 
         <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 blur pointer-events-none select-none -z-10 animate-rise-in [animation-delay:4700ms] max-w-150 w-full">
           <svg
-            className="w-full"
+            className="w-full opacity-70"
             viewBox="0 0 762 192"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

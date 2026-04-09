@@ -3,15 +3,11 @@ import {
   getAllPostSlugs,
   getPostBySlug,
 } from "@/lib/writing";
-import {
-  getWritingTitleTransitionName
-} from "@/lib/writing-view-transition";
-import { ArrowLeftIcon } from "lucide-react";
+import { getWritingTitleTransitionName } from "@/lib/writing-view-transition";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
-import { Button } from "../../button";
+import { BackButton } from "../../back-button";
 import { Markdown } from "../components/markdown";
 
 type PostPageProps = {
@@ -58,14 +54,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
-      <Link
-        className="absolute top-4 left-4 items-center gap-2"
-        href="/writing"
-      >
-        <Button size="sm">
-          <ArrowLeftIcon className="h-4 w-4" /> Back
-        </Button>
-      </Link>
+      <BackButton href="/writing" />
 
       <main className="flex w-full flex-col items-start gap-5 row-start-2">
         <div className="flex flex-col gap-3">

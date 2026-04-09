@@ -1,0 +1,36 @@
+import { ArrowLeftIcon } from "lucide-react";
+import Link from "next/link";
+import type { ComponentProps, ReactNode } from "react";
+import { buttonVariants } from "./button-variants";
+import { cn } from "./cn";
+
+type BackButtonProps = Omit<
+  ComponentProps<typeof Link>,
+  "children" | "className" | "href"
+> & {
+  children?: ReactNode;
+  className?: string;
+  href: ComponentProps<typeof Link>["href"];
+};
+
+export function BackButton({
+  children = "Back",
+  className,
+  href,
+  ...props
+}: BackButtonProps) {
+  return (
+    <Link
+      className={cn(
+        buttonVariants({ size: "sm" }),
+        "absolute top-4 left-4 gap-2",
+        className,
+      )}
+      href={href}
+      {...props}
+    >
+      <ArrowLeftIcon className="h-4 w-4" />
+      {children}
+    </Link>
+  );
+}
