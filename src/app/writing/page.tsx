@@ -9,7 +9,7 @@ import { linkVariants } from "../link";
 
 export const metadata: Metadata = {
   title: "Writing | Chase Adams",
-  description: "Writing on craft, ideas, and the work behind them.",
+  description: "Thoughts on craft, engineering, and other ideas.",
 };
 
 export default async function WritingPagePage() {

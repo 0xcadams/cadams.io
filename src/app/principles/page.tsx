@@ -1,8 +1,12 @@
-"use client";
-
 import * as Accordion from "@radix-ui/react-accordion";
+import type { Metadata } from "next";
 import { BackButton } from "../back-button";
 import { cn } from "../cn";
+
+export const metadata: Metadata = {
+  title: "Principles | Chase Adams",
+  description: "Morals and intuitions that guide me.",
+};
 
 const BoldedText = ({ children }: { children: React.ReactNode }) => {
   return <span className="font-semibold text-amber-400">{children}</span>;

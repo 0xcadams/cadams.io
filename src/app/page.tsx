@@ -1,9 +1,13 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import headshot from "./headshot.jpg";
 import { linkVariants } from "./link";
+
+export const metadata: Metadata = {
+  title: "Chase Adams",
+  description: "Engineer and optimist.",
+};
 
 export default function Home() {
   return (

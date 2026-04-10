@@ -30,17 +30,13 @@ export async function generateMetadata({
   if (!post) {
     return {
       title: "Writing | Chase Adams",
+      description: "Thoughts on craft, engineering, and other ideas.",
     };
   }
 
   return {
-    title: `${post.title} | Writing`,
+    title: `${post.title} | Chase Adams`,
     description: post.description,
-    openGraph: {
-      description: post.description,
-      images: post.image ? [post.image] : undefined,
-      title: post.title,
-    },
   };
 }
 

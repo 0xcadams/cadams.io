@@ -20,7 +20,7 @@ const rockSalt = Rock_Salt({
 
 export const metadata: Metadata = {
   title: "Chase Adams",
-  description: "Chase Adams",
+  description: "Engineer and optimist.",
   metadataBase: new URL("https://cadams.io"),
 };
 
