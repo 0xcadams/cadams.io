@@ -51,7 +51,7 @@ export default function ProjectsPage() {
                   <span
                     className={cn(
                       linkVariants(),
-                      "text-lg no-underline group-hover/project:underline font-(family-name:--font-rock-salt) text-amber-400/80 decoration-amber-400/60",
+                      "text-lg no-underline font-normal group-hover/project:underline font-(family-name:--font-rock-salt) text-amber-400/80 decoration-amber-400/60",
                     )}
                   >
                     {project.name}
