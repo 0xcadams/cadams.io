@@ -38,25 +38,28 @@ export default function ProjectsPage() {
       <BackButton href="/" />
 
       <main className="flex w-full flex-col items-start gap-8 row-start-2">
-        <div className="animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
-          <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Projects
-          </h1>
-        </div>
-
-        <div className="w-full overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms]">
+        <div className="w-full overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
           <ol className="flex gap-6 flex-col text-left w-full">
             {projects.map((project) => (
               <li className="flex flex-col gap-1" key={project.name}>
                 <a
-                  className={cn(linkVariants(), "text-lg")}
+                  className={cn("group/project block transition-colors")}
                   href={project.href}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {project.name}
+                  <span
+                    className={cn(
+                      linkVariants(),
+                      "text-lg no-underline group-hover/project:underline",
+                    )}
+                  >
+                    {project.name}
+                  </span>
+                  <p className="ml-3 my-1 text-sm text-white/70">
+                    {project.description}
+                  </p>
                 </a>
-                <p className="ml-3 text-sm text-white/70">{project.description}</p>
               </li>
             ))}
           </ol>
