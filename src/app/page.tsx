@@ -84,15 +84,15 @@ export default function Home() {
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:620ms]">
           I also have a few{" "}
           <Link className={linkVariants()} href="/principles">
-            principles
+            principles that I try to live by
           </Link>
-          {", a few "}
+          {", "}
           <Link className={linkVariants()} href="/projects">
-            projects
+            open source projects that I maintain
           </Link>
           {", and I "}
           <Link className={linkVariants()} href="/writing">
-            write occasionally
+            write very occasionally
           </Link>
           .
         </div>
