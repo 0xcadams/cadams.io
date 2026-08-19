@@ -82,15 +82,19 @@ export default function Home() {
           <li>Waking Up (Sam Harris)</li>
         </ol>
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:620ms]">
-          I also have a few{" "}
+          I live by a few{" "}
           <Link className={linkVariants()} href="/principles">
             principles
           </Link>
+          {", have some "}
+          <Link className={linkVariants()} href="/projects">
+            personal projects
+          </Link>
           {", and I "}
           <Link className={linkVariants()} href="/writing">
-            write occasionally
+            write very infrequently
           </Link>
-          .
+          {"."}
         </div>
       </div>
     </div>
