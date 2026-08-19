@@ -86,15 +86,15 @@ export default function Home() {
           <Link className={linkVariants()} href="/principles">
             principles
           </Link>
-          , have some{" "}
+          {", have some "}
           <Link className={linkVariants()} href="/projects">
             personal projects
           </Link>
-          , and I{" "}
+          {", and I "}
           <Link className={linkVariants()} href="/writing">
             write very infrequently
           </Link>
-          .
+          {"."}
         </div>
       </div>
     </div>
