@@ -56,9 +56,9 @@ export default function ProjectsPage() {
                   >
                     {project.name}
                   </span>
-                  <p className="ml-3 my-1 text-sm text-white/70">
+                  <span className="ml-3 my-1 block text-sm text-white/70">
                     {project.description}
-                  </p>
+                  </span>
                 </a>
               </li>
             ))}
