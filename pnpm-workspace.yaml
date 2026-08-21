@@ -2,5 +2,11 @@ packages:
   - .
 
 allowBuilds:
+  esbuild: true
   sharp: true
   unrs-resolver: true
+  workerd: true
+
+minimumReleaseAgeExclude:
+  - miniflare@5.20260820.0-alpha
+  - wrangler@4.125.0

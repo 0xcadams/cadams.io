@@ -1,7 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import type { Metadata } from "next";
 import { BackButton } from "../back-button";
-import { cn } from "../cn";
 
 export const metadata: Metadata = {
   title: "Principles | Chase Adams",
@@ -34,30 +33,29 @@ export default function Home() {
           defaultValue={principles[0].title}
           type="single"
         >
-          <ol className="list-inside list-decimal space-y-3 text-sm text-left w-full">
+          <ol className="list-outside list-decimal space-y-3 pl-7 text-sm text-left w-full">
             {principles.map((principle) => (
-              <Accordion.Item key={principle.title} value={principle.title}>
-                <Accordion.Trigger
-                  asChild
-                  className={cn(
-                    "items-center justify-between w-full font-semibold",
-                  )}
-                >
-                  <li role="button">{principle.title}</li>
-                </Accordion.Trigger>
-                <Accordion.Content className="pt-2 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-sm text-white/80">
-                      {principle.description}
-                    </span>
-                  </div>
-                </Accordion.Content>
-              </Accordion.Item>
+              <li key={principle.title}>
+                <Accordion.Item value={principle.title}>
+                  <Accordion.Header>
+                    <Accordion.Trigger className="w-full text-left font-semibold">
+                      {principle.title}
+                    </Accordion.Trigger>
+                  </Accordion.Header>
+                  <Accordion.Content className="pt-2 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-sm text-white/80">
+                        {principle.description}
+                      </span>
+                    </div>
+                  </Accordion.Content>
+                </Accordion.Item>
+              </li>
             ))}
           </ol>
         </Accordion.Root>
         <div className="text-sm text-amber-400/80 font-(family-name:--font-rock-salt) mt-6 ml-1 animate-rise-in motion-reduce:animate-none [animation-delay:240ms]">
-          ~ January 2026
+          ~ August 2026
         </div>
       </main>
     </>

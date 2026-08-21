@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { BackButton } from "../../back-button";
 import { Markdown } from "../components/markdown";
+import { ReadingHeat } from "../components/reading-heat";
 
 type PostPageProps = {
   params: Promise<{
@@ -73,10 +74,9 @@ export default async function PostPage({ params }: PostPageProps) {
           ) : null}
         </div>
 
-        <Markdown
-          className="animate-rise-in motion-reduce:animate-none [animation-delay:120ms] pb-12"
-          content={post.content}
-        />
+        <ReadingHeat className="animate-rise-in motion-reduce:animate-none [animation-delay:120ms] pb-12">
+          <Markdown content={post.content} />
+        </ReadingHeat>
       </main>
     </>
   );

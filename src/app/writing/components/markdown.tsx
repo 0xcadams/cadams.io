@@ -10,22 +10,33 @@ type MarkdownProps = {
 
 const components: Components = {
   h1: ({ children }) => (
-    <h1 className="mt-10 text-3xl font-semibold tracking-tight text-white first:mt-0">
+    <h1
+      className="mt-10 text-3xl font-semibold tracking-tight text-white first:mt-0"
+      data-reading-heat=""
+    >
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-10 text-2xl font-semibold tracking-tight text-white">
+    <h2
+      className="mt-10 text-2xl font-semibold tracking-tight text-white"
+      data-reading-heat=""
+    >
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mt-8 text-xl font-semibold tracking-tight text-white">
+    <h3
+      className="mt-8 text-xl font-semibold tracking-tight text-white"
+      data-reading-heat=""
+    >
       {children}
     </h3>
   ),
   p: ({ children }) => (
-    <p className="mt-6 leading-7 text-white/80">{children}</p>
+    <p className="mt-6 leading-7 text-white/80" data-reading-heat="">
+      {children}
+    </p>
   ),
   a: ({ children, href }) => {
     const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
@@ -59,7 +70,11 @@ const components: Components = {
       {children}
     </ol>
   ),
-  li: ({ children }) => <li className="pl-1 leading-7">{children}</li>,
+  li: ({ children }) => (
+    <li className="pl-1 leading-7" data-reading-heat="">
+      {children}
+    </li>
+  ),
   img: ({ alt, src }) => {
     if (!src) {
       return null;
@@ -69,13 +84,17 @@ const components: Components = {
       <img
         alt={alt ?? ""}
         className="mt-8 w-full rounded-lg border border-white/10 opacity-80 object-cover shadow-[0_0_48px_rgba(251,191,36,0.32)]"
+        data-reading-heat=""
         src={src}
       />
     );
   },
   hr: () => <hr className="mt-10 border-white/10" />,
   pre: ({ children }) => (
-    <pre className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/90">
+    <pre
+      className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/90"
+      data-reading-heat=""
+    >
       {children}
     </pre>
   ),
