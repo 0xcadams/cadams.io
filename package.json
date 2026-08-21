@@ -5,10 +5,13 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "presence:dev": "wrangler dev --config presence/wrangler.jsonc",
+    "presence:types": "wrangler types --config presence/wrangler.jsonc presence/worker-configuration.d.ts",
+    "presence:check": "tsc --project presence/tsconfig.json",
+    "presence:deploy": "wrangler deploy --config presence/wrangler.jsonc"
   },
   "dependencies": {
-    "@github/hotkey": "^3.1.4",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@tailwindcss/postcss": "^4.2.2",
@@ -31,11 +34,7 @@
     "eslint-config-next": "16.2.3",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp"
-    ]
+    "typescript": "^6.0.2",
+    "wrangler": "4.125.0"
   }
 }
