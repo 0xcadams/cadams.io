@@ -18,6 +18,12 @@ export interface MoveMessage extends CursorPosition {
   type: "move";
 }
 
+export interface InactiveMessage {
+  type: "inactive";
+}
+
+export type ClientMessage = MoveMessage | InactiveMessage;
+
 export type ServerMessage =
   | {
       type: "hello";
@@ -48,13 +54,17 @@ const isPresenceCursor = (value: unknown): value is PresenceCursor => {
   );
 };
 
-export const isMoveMessage = (value: unknown): value is MoveMessage => {
+export const isClientMessage = (value: unknown): value is ClientMessage => {
   if (!value || typeof value !== "object") {
     return false;
   }
 
   const message = value as Record<string, unknown>;
   const anchor = message.anchor;
+
+  if (message.type === "inactive") {
+    return true;
+  }
 
   return (
     message.type === "move" &&

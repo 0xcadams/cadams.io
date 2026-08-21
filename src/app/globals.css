@@ -296,6 +296,19 @@
   opacity: 1;
 }
 
+.cursor-temperature[data-touch="true"] {
+  transition:
+    transform 60ms linear,
+    opacity 100ms ease-out;
+}
+
+.cursor-temperature[data-departed="true"] {
+  opacity: 0;
+  transition:
+    transform 60ms linear,
+    opacity 60s linear;
+}
+
 .cursor-temperature-core {
   position: absolute;
   top: 0;
