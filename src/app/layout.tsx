@@ -1,8 +1,13 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Inter, Rock_Salt } from "next/font/google";
+import {
+  Architects_Daughter,
+  Inter,
+  Rock_Salt,
+} from "next/font/google";
 import { cn } from "./cn";
 import { CursorTemperature } from "./cursor-temperature";
+import { EmberIlluminationProvider } from "./ember-illumination";
 import { FireHoverMedia } from "./fire-hover-media";
 import { IconLink } from "./icon-link";
 import { RemoteEmbers } from "./remote-embers";
@@ -17,6 +22,12 @@ const sans = Inter({
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
   variable: "--font-rock-salt",
+  weight: "400",
+});
+
+const architectsDaughter = Architects_Daughter({
+  subsets: ["latin"],
+  variable: "--font-architects-daughter",
   weight: "400",
 });
 
@@ -39,28 +50,36 @@ export default function RootLayout({
     <html lang="en" className="h-screen-safe w-full bg-black">
       <body
         className={cn(
-          `${sans.variable} ${rockSalt.variable} h-full w-full antialiased transition-with-reduce overflow-hidden relative`,
+          `${sans.variable} ${rockSalt.variable} ${architectsDaughter.variable} h-full w-full antialiased transition-with-reduce overflow-hidden relative`,
           "bg-linear-82 from-[#f59e0b]/7 via-16% lg:via-20% xl:via-24% via-[#ea580c]/2 to-35% to-transparent",
         )}
       >
-        <RemoteEmbers />
-        <CursorTemperature />
+        <EmberIlluminationProvider>
+          <RemoteEmbers />
+          <CursorTemperature />
 
-        <div
-          className={cn(
-            "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full py-8 px-12 gap-16 sm:py-10 sm:px-20 lg:px-28 font-sans text-white",
-          )}
-          data-page-scroll=""
-        >
-          <main
+          <div
             className={cn(
-              "grid lg:grid-cols-[1.05fr_0.95fr] row-start-2 w-full gap-10 max-w-6xl",
+              "grid grid-rows-[20px_1fr_20px] max-h-full overflow-y-auto items-center justify-items-center h-full w-full py-8 px-12 gap-16 sm:py-10 sm:px-20 lg:px-28 font-sans text-white",
             )}
+            data-page-scroll=""
           >
-            <div className="max-w-lg">{children}</div>
-            <FireHoverMedia />
-          </main>
-          <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center animate-rise-in [animation-delay:620ms]">
+            <main
+              className={cn(
+                "grid lg:grid-cols-[1.05fr_0.95fr] row-start-2 w-full gap-10 max-w-6xl",
+              )}
+            >
+              <div
+                className="max-w-lg"
+                data-construction-node="content-column"
+              >
+                {children}
+              </div>
+              <FireHoverMedia />
+            </main>
+            <footer
+              className="row-start-3 flex gap-6 flex-wrap items-center justify-center animate-rise-in [animation-delay:620ms]"
+            >
             <IconLink
               aria-label="GitHub"
               href="https://github.com/0xcadams"
@@ -106,15 +125,15 @@ export default function RootLayout({
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </IconLink>
-          </footer>
+            </footer>
 
-          <Analytics
-            scriptSrc="https://cadams.io/api/data/script.js"
-            endpoint="https://cadams.io/api/data"
-          />
-        </div>
+            <Analytics
+              scriptSrc="https://cadams.io/api/data/script.js"
+              endpoint="https://cadams.io/api/data"
+            />
+          </div>
 
-        <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 blur pointer-events-none select-none -z-10 animate-rise-in [animation-delay:4700ms] max-w-150 w-full">
+          <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 blur pointer-events-none select-none -z-10 animate-rise-in [animation-delay:4700ms] max-w-150 w-full">
           <svg
             className="w-full opacity-70"
             viewBox="0 0 762 192"
@@ -260,7 +279,8 @@ export default function RootLayout({
               </filter>
             </defs>
           </svg>
-        </div>
+          </div>
+        </EmberIlluminationProvider>
       </body>
     </html>
   );

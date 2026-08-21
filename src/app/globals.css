@@ -471,3 +471,59 @@ img[data-reading-heat][data-reading-active="true"] {
     transition: none;
   }
 }
+
+.ember-illumination {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483643;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ember-illumination-outline {
+  fill: none;
+  stroke: oklch(79% 0.12 73 / 0.42);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.construction-line,
+.construction-extension {
+  fill: none;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.construction-line {
+  stroke: oklch(79% 0.12 73 / 0.62);
+}
+
+.construction-extension {
+  stroke: oklch(79% 0.08 73 / 0.3);
+  stroke-dasharray: 2 3;
+}
+
+.construction-label,
+.ember-dimension-text {
+  fill: oklch(88% 0.08 76 / 0.84);
+  stroke: rgb(0 0 0 / 0.82);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font-family: var(--font-architects-daughter), cursive;
+  font-size: 11px;
+}
+
+.ember-dimension-line {
+  stroke: oklch(79% 0.12 73 / 0.5);
+  stroke-dasharray: 2 3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ember-dimension-text {
+  font-size: 10px;
+}

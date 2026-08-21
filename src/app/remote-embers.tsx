@@ -9,6 +9,7 @@ import {
   type CursorPosition,
   type PresenceCursor,
 } from "../presence-protocol";
+import { useEmberIllumination } from "./ember-illumination";
 
 const SEND_INTERVAL_MS = 50;
 const TOUCH_DEPARTURE_DELAY_MS = 100;
@@ -26,6 +27,7 @@ const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
 const roundCoordinate = (value: number) => Math.round(value * 10_000) / 10_000;
+const getIlluminationId = (id: string) => `remote:${id}`;
 
 const getEndpoint = (): string | null => {
   if (process.env.NEXT_PUBLIC_PRESENCE_URL) {
@@ -158,6 +160,7 @@ const resolveAnchor = (root: HTMLElement, path: string): Element | null => {
 
 export function RemoteEmbers() {
   const pathname = usePathname();
+  const { removeEmber, reportEmber } = useEmberIllumination();
   const [peers, setPeers] = useState<PeerIdentity[]>([]);
   const cursorsRef = useRef(new Map<string, PresenceCursor>());
   const elementsRef = useRef(new Map<string, HTMLDivElement>());
@@ -209,6 +212,10 @@ export function RemoteEmbers() {
         window.clearTimeout(timer);
       }
 
+      for (const id of cursorsRef.current.keys()) {
+        removeEmber(getIlluminationId(id));
+      }
+
       departureTimersRef.current.clear();
       cursorsRef.current.clear();
       elementsRef.current.clear();
@@ -244,6 +251,7 @@ export function RemoteEmbers() {
 
         element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
         element.dataset.visible = "true";
+        reportEmber(getIlluminationId(id), { x, y });
       }
     };
 
@@ -299,6 +307,7 @@ export function RemoteEmbers() {
 
     const removeCursor = (id: string) => {
       clearDeparture(id);
+      removeEmber(getIlluminationId(id));
 
       if (!cursorsRef.current.delete(id)) {
         return;
@@ -317,6 +326,8 @@ export function RemoteEmbers() {
       }
 
       const element = elementsRef.current.get(id);
+
+      removeEmber(getIlluminationId(id));
 
       if (element) {
         element.dataset.departed = "true";
@@ -615,7 +626,7 @@ export function RemoteEmbers() {
         new CustomEvent(PRESENCE_NAME_EVENT, { detail: null }),
       );
     };
-  }, [pathname]);
+  }, [pathname, removeEmber, reportEmber]);
 
   return (
     <div aria-hidden="true" className="remote-embers">

@@ -54,7 +54,10 @@ export default async function PostPage({ params }: PostPageProps) {
       <BackButton href="/writing" />
 
       <main className="flex w-full flex-col items-start gap-5 row-start-2">
-        <div className="flex flex-col gap-3">
+        <div
+          className="flex w-full flex-col gap-3"
+          data-construction-node="article-heading"
+        >
           <ViewTransition
             default="none"
             name={getWritingTitleTransitionName(post.slug)}
@@ -74,9 +77,14 @@ export default async function PostPage({ params }: PostPageProps) {
           ) : null}
         </div>
 
-        <ReadingHeat className="animate-rise-in motion-reduce:animate-none [animation-delay:120ms] pb-12">
-          <Markdown content={post.content} />
-        </ReadingHeat>
+        <div
+          className="w-full"
+          data-construction-node="article-body"
+        >
+          <ReadingHeat className="animate-rise-in motion-reduce:animate-none [animation-delay:120ms] pb-12">
+            <Markdown content={post.content} />
+          </ReadingHeat>
+        </div>
       </main>
     </>
   );

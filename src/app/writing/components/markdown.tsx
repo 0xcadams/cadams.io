@@ -84,6 +84,7 @@ const components: Components = {
       <img
         alt={alt ?? ""}
         className="mt-8 w-full rounded-lg border border-white/10 opacity-80 object-cover shadow-[0_0_48px_rgba(251,191,36,0.32)]"
+        data-construction-node="article-image"
         data-reading-heat=""
         src={src}
       />

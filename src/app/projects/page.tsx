@@ -38,10 +38,17 @@ export default function ProjectsPage() {
       <BackButton href="/" />
 
       <main className="flex w-full flex-col items-start gap-8 row-start-2">
-        <div className="w-full overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
-          <ol className="flex gap-6 flex-col text-left w-full">
-            {projects.map((project) => (
-              <li className="flex flex-col gap-1" key={project.name}>
+        <div className="w-full animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
+          <ol
+            className="flex gap-6 flex-col text-left w-full"
+            data-construction-node="projects-list"
+          >
+            {projects.map((project, index) => (
+              <li
+                className="flex w-full flex-col gap-1"
+                data-construction-node={`project-${index}`}
+                key={project.name}
+              >
                 <a
                   className={cn("group/project block transition-colors")}
                   href={project.href}
