@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { PRESENCE_NAME_EVENT } from "../presence-protocol";
+import { useEmberIllumination } from "./ember-illumination";
 
 const interactiveSelector = [
   "a[href]",
@@ -19,8 +20,10 @@ const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
 const TOUCH_DEPARTURE_DURATION_MS = 60_000;
+const LOCAL_EMBER_ID = "local";
 
 export function CursorTemperature() {
+  const { removeEmber, reportEmber } = useEmberIllumination();
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const pulseRef = useRef<HTMLDivElement | null>(null);
   const nameRef = useRef<HTMLSpanElement | null>(null);
@@ -164,19 +167,30 @@ export function CursorTemperature() {
       setVisible(false);
       root.classList.remove("temperature-cursor-enabled");
       window.cancelAnimationFrame(animationFrame);
+      removeEmber(LOCAL_EMBER_ID);
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      if (
-        event.pointerType === "touch" &&
-        event.pointerId === activeTouchId &&
-        !reducedMotion.matches
-      ) {
-        cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+      if (event.pointerType === "touch" && event.pointerId === activeTouchId) {
+        reportEmber(LOCAL_EMBER_ID, {
+          x: event.clientX,
+          y: event.clientY,
+        });
+
+        if (!reducedMotion.matches) {
+          cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+        }
+
         return;
       }
 
-      if (event.pointerType !== "mouse" || !isEligible()) {
+      if (event.pointerType !== "mouse" || !finePointer.matches) {
+        return;
+      }
+
+      reportEmber(LOCAL_EMBER_ID, { x: event.clientX, y: event.clientY });
+
+      if (!isEligible()) {
         return;
       }
 
@@ -219,16 +233,26 @@ export function CursorTemperature() {
         interactive = false;
         pressed = false;
         setVisible(false);
+        removeEmber(LOCAL_EMBER_ID);
       }
     };
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (event.pointerType === "touch" && !reducedMotion.matches) {
+      if (event.pointerType === "touch") {
         if (activeTouchId !== null) {
           return;
         }
 
         activeTouchId = event.pointerId;
+        reportEmber(LOCAL_EMBER_ID, {
+          x: event.clientX,
+          y: event.clientY,
+        });
+
+        if (reducedMotion.matches) {
+          return;
+        }
+
         clearTouchDeparture();
         cursor.dataset.touch = "true";
         cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
@@ -252,6 +276,7 @@ export function CursorTemperature() {
       if (event.pointerType === "touch" && event.pointerId === activeTouchId) {
         activeTouchId = null;
         cursor.dataset.touch = "false";
+        removeEmber(LOCAL_EMBER_ID);
         startTouchDeparture();
         return;
       }
@@ -270,6 +295,7 @@ export function CursorTemperature() {
       cursor.dataset.touch = "false";
       pressed = false;
       setVisible(false);
+      removeEmber(LOCAL_EMBER_ID);
     };
 
     const handlePresenceName = (event: Event) => {
@@ -313,8 +339,9 @@ export function CursorTemperature() {
       root.classList.remove("temperature-cursor-enabled");
       window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(touchDepartureTimer);
+      removeEmber(LOCAL_EMBER_ID);
     };
-  }, []);
+  }, [removeEmber, reportEmber]);
 
   return (
     <>

@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="grid gap-10">
-      <div className="flex group flex-col gap-6">
+      <div
+        className="flex group w-full flex-col gap-6"
+        data-construction-node="home-introduction"
+      >
         <div className="flex gap-2 items-center">
           <span className="flex gap-4 w-full items-center text-lg text-amber-400/80 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
             <span>Chase Adams</span>
@@ -26,7 +29,7 @@ export default function Home() {
             />
           </span>
         </div>
-        <div className="flex flex-col gap-6 items-start">
+        <div className="flex w-full flex-col gap-6 items-start">
           <div className="animate-rise-in motion-reduce:animate-none [animation-delay:140ms]">
             I am an engineer and an optimist; partner at{" "}
             <a
@@ -57,7 +60,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex group flex-col gap-6">
+      <div
+        className="flex group w-full flex-col gap-6"
+        data-construction-node="home-grounding"
+      >
         <span className="text-sm text-amber-400 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:300ms]">
           {"— What keeps me grounded;"}
         </span>
@@ -81,7 +87,7 @@ export default function Home() {
           <li className="mb-2">Thinking, Fast and Slow (Daniel Kahneman)</li>
           <li>Waking Up (Sam Harris)</li>
         </ol>
-        <div className="animate-rise-in motion-reduce:animate-none [animation-delay:620ms]">
+        <div className="w-full animate-rise-in motion-reduce:animate-none [animation-delay:620ms]">
           I live by a few{" "}
           <Link className={linkVariants()} href="/principles">
             principles

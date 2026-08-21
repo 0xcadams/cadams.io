@@ -1,7 +1,7 @@
 import { DurableObject } from "cloudflare:workers";
 import {
   ROOM_FULL_CLOSE_CODE,
-  isClientMessage,
+  parseClientMessage,
   type CursorPosition,
   type PresenceCursor,
   type ServerMessage,
@@ -193,16 +193,9 @@ export class CursorRoom extends DurableObject<Env> {
       return;
     }
 
-    let parsed: unknown;
+    const parsed = parseClientMessage(rawMessage);
 
-    try {
-      parsed = JSON.parse(rawMessage);
-    } catch {
-      socket.close(1008, "Invalid message");
-      return;
-    }
-
-    if (!isClientMessage(parsed)) {
+    if (!parsed) {
       socket.close(1008, "Invalid message");
       return;
     }

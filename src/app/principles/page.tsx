@@ -30,12 +30,17 @@ export default function Home() {
         </div>
         <Accordion.Root
           className="max-h-110 sm:max-h-140 overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:120ms] transition-all"
+          data-construction-node="principles-accordion"
           defaultValue={principles[0].title}
           type="single"
         >
           <ol className="list-outside list-decimal space-y-3 pl-7 text-sm text-left w-full">
-            {principles.map((principle) => (
-              <li key={principle.title}>
+            {principles.map((principle, index) => (
+              <li
+                className="w-full"
+                data-construction-node={`principle-${index}`}
+                key={principle.title}
+              >
                 <Accordion.Item value={principle.title}>
                   <Accordion.Header>
                     <Accordion.Trigger className="w-full text-left font-semibold">

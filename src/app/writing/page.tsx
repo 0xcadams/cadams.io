@@ -20,10 +20,13 @@ export default async function WritingPagePage() {
       <BackButton href="/" />
 
       <main className="flex w-full flex-col items-start gap-8 row-start-2">
-        <div className="w-full overflow-y-auto animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
+        <div
+          className="w-full animate-rise-in motion-reduce:animate-none [animation-delay:0ms]"
+          data-construction-node="writing-list"
+        >
           {posts.length > 0 ? (
             <ol className="flex gap-6 flex-col text-left w-full">
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <li className="flex flex-col gap-1" key={post.href}>
                   <Link
                     className={cn("group/post block transition-colors")}
@@ -39,12 +42,20 @@ export default async function WritingPagePage() {
                           linkVariants(),
                           "text-lg no-underline group-hover/post:underline",
                         )}
+                        data-construction-node={
+                          index === 0 ? "writing-first-title" : undefined
+                        }
                       >
                         {post.title}
                       </span>
                     </ViewTransition>
                     {post.date ? (
-                      <p className="ml-3 my-1 text-xs text-amber-400/80 font-(family-name:--font-rock-salt)">
+                      <p
+                        className="ml-3 my-1 text-xs text-amber-400/80 font-(family-name:--font-rock-salt)"
+                        data-construction-node={
+                          index === 0 ? "writing-first-date" : undefined
+                        }
+                      >
                         ~ {formatWritingDate(post.date)}
                       </p>
                     ) : null}
