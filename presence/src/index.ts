@@ -1,7 +1,7 @@
 import { DurableObject } from "cloudflare:workers";
 import {
   ROOM_FULL_CLOSE_CODE,
-  isMoveMessage,
+  isClientMessage,
   type CursorPosition,
   type PresenceCursor,
   type ServerMessage,
@@ -202,8 +202,19 @@ export class CursorRoom extends DurableObject<Env> {
       return;
     }
 
-    if (!isMoveMessage(parsed)) {
+    if (!isClientMessage(parsed)) {
       socket.close(1008, "Invalid message");
+      return;
+    }
+
+    if (parsed.type === "inactive") {
+      if (attachment.cursor) {
+        attachment.cursor = null;
+        socket.serializeAttachment(attachment);
+        this.pendingCursors.delete(attachment.id);
+        this.broadcast({ type: "leave", id: attachment.id }, socket);
+      }
+
       return;
     }
 

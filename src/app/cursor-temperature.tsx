@@ -18,6 +18,8 @@ const interactiveSelector = [
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
+const TOUCH_DEPARTURE_DURATION_MS = 60_000;
+
 export function CursorTemperature() {
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const pulseRef = useRef<HTMLDivElement | null>(null);
@@ -52,12 +54,30 @@ export function CursorTemperature() {
     let lastFrameAt = 0;
     let speed = 0;
     let heat = 0.45;
+    let activeTouchId: number | null = null;
+    let touchDepartureTimer = 0;
 
     const isEligible = () => finePointer.matches && !reducedMotion.matches;
 
     const setVisible = (nextVisible: boolean) => {
       visible = nextVisible;
       cursor.dataset.visible = String(nextVisible);
+    };
+
+    const clearTouchDeparture = () => {
+      window.clearTimeout(touchDepartureTimer);
+      touchDepartureTimer = 0;
+      cursor.dataset.departed = "false";
+    };
+
+    const startTouchDeparture = () => {
+      clearTouchDeparture();
+      cursor.dataset.departed = "true";
+      touchDepartureTimer = window.setTimeout(() => {
+        touchDepartureTimer = 0;
+        cursor.dataset.departed = "false";
+        setVisible(false);
+      }, TOUCH_DEPARTURE_DURATION_MS);
     };
 
     const updateInteractiveTarget = (target: EventTarget | null) => {
@@ -147,10 +167,20 @@ export function CursorTemperature() {
     };
 
     const handlePointerMove = (event: PointerEvent) => {
+      if (
+        event.pointerType === "touch" &&
+        event.pointerId === activeTouchId &&
+        !reducedMotion.matches
+      ) {
+        cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+        return;
+      }
+
       if (event.pointerType !== "mouse" || !isEligible()) {
         return;
       }
 
+      clearTouchDeparture();
       enable();
 
       const timestamp = performance.now();
@@ -193,6 +223,19 @@ export function CursorTemperature() {
     };
 
     const handlePointerDown = (event: PointerEvent) => {
+      if (event.pointerType === "touch" && !reducedMotion.matches) {
+        if (activeTouchId !== null) {
+          return;
+        }
+
+        activeTouchId = event.pointerId;
+        clearTouchDeparture();
+        cursor.dataset.touch = "true";
+        cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+        setVisible(true);
+        return;
+      }
+
       if (!enabled || event.pointerType !== "mouse") {
         return;
       }
@@ -205,7 +248,14 @@ export function CursorTemperature() {
       pulse.classList.add("is-active");
     };
 
-    const handlePointerUp = () => {
+    const handlePointerUp = (event: PointerEvent) => {
+      if (event.pointerType === "touch" && event.pointerId === activeTouchId) {
+        activeTouchId = null;
+        cursor.dataset.touch = "false";
+        startTouchDeparture();
+        return;
+      }
+
       pressed = false;
     };
 
@@ -216,6 +266,8 @@ export function CursorTemperature() {
     };
 
     const handleWindowBlur = () => {
+      activeTouchId = null;
+      cursor.dataset.touch = "false";
       pressed = false;
       setVisible(false);
     };
@@ -260,6 +312,7 @@ export function CursorTemperature() {
       window.removeEventListener(PRESENCE_NAME_EVENT, handlePresenceName);
       root.classList.remove("temperature-cursor-enabled");
       window.cancelAnimationFrame(animationFrame);
+      window.clearTimeout(touchDepartureTimer);
     };
   }, []);
 
@@ -268,7 +321,9 @@ export function CursorTemperature() {
       <div
         aria-hidden="true"
         className="cursor-temperature"
+        data-departed="false"
         data-interactive="false"
+        data-touch="false"
         data-visible="false"
         ref={cursorRef}
       >

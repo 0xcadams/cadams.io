@@ -11,6 +11,7 @@ import {
 } from "../presence-protocol";
 
 const SEND_INTERVAL_MS = 50;
+const TOUCH_DEPARTURE_DELAY_MS = 100;
 const DEPARTURE_DURATION_MS = 60_000;
 const PRODUCTION_ENDPOINT = "wss://presence.cadams.io/v1/connect";
 const SESSION_STORAGE_KEY = "cursor-presence-session";
@@ -193,12 +194,14 @@ export function RemoteEmbers() {
     let socket: WebSocket | null = null;
     let reconnectTimer = 0;
     let sendTimer = 0;
+    let inactiveTimer = 0;
     let positionFrame = 0;
     let retryCount = 0;
     let stopped = false;
     let roomUnavailable = false;
     let selfId: string | null = null;
     let lastSentAt = 0;
+    let activeTouchId: number | null = null;
     let pendingPosition: CursorPosition | null = null;
 
     const clearPeers = () => {
@@ -458,7 +461,10 @@ export function RemoteEmbers() {
 
     const disconnect = () => {
       window.clearTimeout(reconnectTimer);
+      window.clearTimeout(inactiveTimer);
       reconnectTimer = 0;
+      inactiveTimer = 0;
+      activeTouchId = null;
       selfId = null;
 
       if (socket) {
@@ -480,11 +486,7 @@ export function RemoteEmbers() {
       socket.send(JSON.stringify({ type: "move", ...position }));
     };
 
-    const handlePointerMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse" || !finePointer.matches) {
-        return;
-      }
-
+    const queuePosition = (event: PointerEvent) => {
       pendingPosition = getPointerPosition(event, scrollRoot);
 
       const elapsed = performance.now() - lastSentAt;
@@ -509,6 +511,50 @@ export function RemoteEmbers() {
       }
     };
 
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== "touch" || activeTouchId !== null) {
+        return;
+      }
+
+      activeTouchId = event.pointerId;
+      window.clearTimeout(inactiveTimer);
+      inactiveTimer = 0;
+      queuePosition(event);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const isMouse = event.pointerType === "mouse" && finePointer.matches;
+      const isActiveTouch =
+        event.pointerType === "touch" && event.pointerId === activeTouchId;
+
+      if (isMouse || isActiveTouch) {
+        queuePosition(event);
+      }
+    };
+
+    const handlePointerEnd = (event: PointerEvent) => {
+      if (event.pointerType !== "touch" || event.pointerId !== activeTouchId) {
+        return;
+      }
+
+      activeTouchId = null;
+      window.clearTimeout(sendTimer);
+      sendTimer = 0;
+
+      if (pendingPosition) {
+        sendPosition(pendingPosition);
+        pendingPosition = null;
+      }
+
+      inactiveTimer = window.setTimeout(() => {
+        inactiveTimer = 0;
+
+        if (socket?.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify({ type: "inactive" }));
+        }
+      }, TOUCH_DEPARTURE_DELAY_MS);
+    };
+
     const handleAvailabilityChange = () => {
       if (shouldConnect()) {
         connect();
@@ -524,7 +570,12 @@ export function RemoteEmbers() {
       resizeObserver.observe(child);
     }
 
+    document.addEventListener("pointerdown", handlePointerDown, { passive: true });
     document.addEventListener("pointermove", handlePointerMove, { passive: true });
+    document.addEventListener("pointerup", handlePointerEnd, { passive: true });
+    document.addEventListener("pointercancel", handlePointerEnd, {
+      passive: true,
+    });
     document.addEventListener("visibilitychange", handleAvailabilityChange);
     document.addEventListener("load", schedulePosition, true);
     scrollRoot.addEventListener("scroll", schedulePosition, { passive: true });
@@ -539,8 +590,12 @@ export function RemoteEmbers() {
       stopped = true;
       window.clearTimeout(reconnectTimer);
       window.clearTimeout(sendTimer);
+      window.clearTimeout(inactiveTimer);
       window.cancelAnimationFrame(positionFrame);
+      document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("pointermove", handlePointerMove);
+      document.removeEventListener("pointerup", handlePointerEnd);
+      document.removeEventListener("pointercancel", handlePointerEnd);
       document.removeEventListener("visibilitychange", handleAvailabilityChange);
       document.removeEventListener("load", schedulePosition, true);
       scrollRoot.removeEventListener("scroll", schedulePosition);
