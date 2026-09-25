@@ -75,7 +75,7 @@ export default function Home() {
           I love to spend time with my{" "}
           <PhotoHoverCard
             alt="My wife and me on our wedding day"
-            className="w-84"
+            className="w-96"
             sizes="336px"
             src={j}
           >

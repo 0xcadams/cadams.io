@@ -42,6 +42,7 @@ export function PhotoHoverCard({
           sideOffset={10}
         >
           <Image
+            loading="eager"
             alt={alt}
             className="h-auto w-full rounded-lg"
             sizes={sizes}
