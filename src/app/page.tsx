@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import aurora from "./aurora.png";
 import headshot from "./headshot.jpg";
+import j from "./j.png";
 import { linkVariants } from "./link";
+import { PhotoHoverCard } from "./photo-hover-card";
 
 export const metadata: Metadata = {
   title: "Chase Adams",
@@ -69,8 +72,21 @@ export default function Home() {
         </span>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:360ms]">
-          I love to spend time with my wife & family & friends & dogs, explore
-          new ideas, travel, run, ski, and read.
+          I love to spend time with my{" "}
+          <PhotoHoverCard
+            alt="My wife and me on our wedding day"
+            className="w-84"
+            sizes="336px"
+            src={j}
+          >
+            wife
+          </PhotoHoverCard>{" "}
+          &{" "}
+          <PhotoHoverCard alt="Me holding my daughter, Aurora" src={aurora}>
+            baby daughter
+          </PhotoHoverCard>{" "}
+          & family & friends & dogs, explore new ideas, build things, travel,
+          run, ski, and read.
         </div>
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:440ms]">
