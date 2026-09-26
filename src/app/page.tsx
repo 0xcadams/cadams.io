@@ -5,7 +5,7 @@ import aurora from "./aurora.png";
 import headshot from "./headshot.jpg";
 import j from "./j.png";
 import { linkVariants } from "./link";
-import { PhotoHoverCard } from "./photo-hover-card";
+import { PhotoPopover } from "./photo-popover";
 
 export const metadata: Metadata = {
   title: "Chase Adams",
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="flex gap-2 items-center">
           <span className="flex gap-4 w-full items-center text-lg text-amber-400/80 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
             <span>Chase Adams</span>
-            <PhotoHoverCard alt="Chase Adams" src={headshot}>
+            <PhotoPopover alt="Chase Adams" src={headshot}>
               <Image
                 src={headshot}
                 alt="Chase Adams"
@@ -31,7 +31,7 @@ export default function Home() {
                 loading="eager"
                 className="rounded-lg saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:40ms]"
               />
-            </PhotoHoverCard>
+            </PhotoPopover>
           </span>
         </div>
         <div className="flex w-full flex-col gap-6 items-start">
@@ -75,18 +75,18 @@ export default function Home() {
 
         <div className="animate-rise-in motion-reduce:animate-none [animation-delay:360ms]">
           I love to spend time with my{" "}
-          <PhotoHoverCard
+          <PhotoPopover
             alt="My wife and me on our wedding day"
             className="w-96"
             sizes="336px"
             src={j}
           >
             wife
-          </PhotoHoverCard>{" "}
+          </PhotoPopover>{" "}
           &{" "}
-          <PhotoHoverCard alt="Me holding my daughter, Aurora" src={aurora}>
+          <PhotoPopover alt="Me holding my daughter, Aurora" src={aurora}>
             baby daughter
-          </PhotoHoverCard>{" "}
+          </PhotoPopover>{" "}
           & family & friends & dogs, explore new ideas, build things, travel,
           run, ski, and read.
         </div>
