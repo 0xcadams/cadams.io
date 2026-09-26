@@ -22,14 +22,16 @@ export default function Home() {
         <div className="flex gap-2 items-center">
           <span className="flex gap-4 w-full items-center text-lg text-amber-400/80 font-(family-name:--font-rock-salt) animate-rise-in motion-reduce:animate-none [animation-delay:0ms]">
             <span>Chase Adams</span>
-            <Image
-              src={headshot}
-              alt="Chase Adams"
-              width={140}
-              preload
-              loading="eager"
-              className="rounded-lg saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:40ms]"
-            />
+            <PhotoHoverCard alt="Chase Adams" src={headshot}>
+              <Image
+                src={headshot}
+                alt="Chase Adams"
+                width={140}
+                preload
+                loading="eager"
+                className="rounded-lg saturate-150 grayscale size-9 object-cover overflow-clip animate-rise-in motion-reduce:animate-none [animation-delay:40ms]"
+              />
+            </PhotoHoverCard>
           </span>
         </div>
         <div className="flex w-full flex-col gap-6 items-start">
