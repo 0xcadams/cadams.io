@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withTnl } from "@tnldotdev/tnl/next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
@@ -37,4 +38,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withTnl(nextConfig);

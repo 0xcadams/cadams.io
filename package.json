@@ -2,7 +2,7 @@
   "name": "cadams.io",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "tnl dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -21,7 +21,7 @@
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.33.0",
-    "next": "16.3.2",
+    "next": "16.3.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-markdown": "^10.1.0",
@@ -29,11 +29,12 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@tnldotdev/tnl": "0.1.0-rc.34",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "eslint": "^9.39.5",
-    "eslint-config-next": "16.3.2",
+    "eslint-config-next": "16.3.6",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",

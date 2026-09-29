@@ -112,7 +112,7 @@ export default function Home() {
           </Link>
           {", have some "}
           <Link className={linkVariants()} href="/projects">
-            personal projects
+            side projects
           </Link>
           {", and I "}
           <Link className={linkVariants()} href="/writing">

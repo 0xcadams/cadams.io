@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 const projects = [
   {
     description:
+      "Public, worktree-driven HTTPS URLs for local apps.",
+    href: "https://tnl.dev",
+    name: "tnl",
+  },
+  {
+    description:
       "SSR-safe dark mode and theming for Next.js, TanStack Start, React Router, and many more.",
     href: "https://ssr-themes.cadams.io",
     name: "ssr-themes",
