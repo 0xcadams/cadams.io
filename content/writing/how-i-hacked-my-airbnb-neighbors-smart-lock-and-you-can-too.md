@@ -5,8 +5,6 @@ date: "2020-01-07"
 image: /images/content/airbnb-smart-lock/home-assistant-login.png
 ---
 
-## Introduction
-
 In early 2020, I found a major oversight that let me open my Airbnb neighbor’s smart lock. It wasn’t difficult, and the company never resolved it while I was there, despite my efforts to report it.
 
 I left the company unnamed at the time to protect its guests. It was Sonder, which shut down and filed for Chapter 7 bankruptcy in November 2025.
