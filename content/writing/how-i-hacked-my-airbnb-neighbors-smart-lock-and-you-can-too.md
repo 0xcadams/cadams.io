@@ -86,13 +86,3 @@ _Z Wave history_
 So I did what any normal person would do, I walked down the hall and tried to see if the door would unlock when I pressed that digital switch. And when I walked by and clicked it, **the resounding sound of the lock whirring to “open” was immediate and loud.**
 
 I immediately went back to my room and unplugged my Pi. If I can do this, who else can? It was alarming — this company has **locations across the globe**, with the engineering team potentially using this same password across every single room!! Yeah, it’s a clever password, but is it worth the danger you are exposing your customers to? I emailed the CEO of the company, and he never returned my message. Hence, I wrote this story to hopefully shame engineering practices like this in the future.
-
-## TLDR
-
-- Engineers must be careful when creating passwords which are used for important functions in a company. A reused password is _never_ a good thing — it only provides opportunity for hackers to use it against someone.
-
-- I should never be able to access my neighbor’s WiFi network (again, password reuse). I could have done so many more things just with that ability!
-
-- Smart devices should be left to the people who know what they are doing. **Especially smart locks.** Custom HomeAssistant scripts with business value only provide a finite amount of upside, but someone accessing your room without your consent can ruin a companies reputation.
-
-### Follow me on Twitter for more: [https://twitter.com/0xcadams](https://twitter.com/0xcadams).
