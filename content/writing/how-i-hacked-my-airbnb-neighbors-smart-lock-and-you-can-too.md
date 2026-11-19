@@ -7,9 +7,9 @@ image: /images/content/airbnb-smart-lock/home-assistant-login.png
 
 ## Introduction
 
-A few weeks ago, I uncovered a major oversight that anyone could use to open my Airbnb’s smart lock. It wasn’t even that difficult to find and **it still has not been resolved by the company (despite efforts to bring it to their attention)**.
+In early 2020, I found a major oversight that let me open my Airbnb neighbor’s smart lock. It wasn’t difficult, and the company never resolved it while I was there, despite my efforts to report it.
 
-I am publishing this to bring awareness to the issue and hopefully teach people to avoid major flaws like this in the future. I will not name the company in question to avoid exposing current residents in **their 2,150+ units with 3,200 rooms+ in 28+ worldwide locations.**
+I left the company unnamed at the time to protect its guests. It was Sonder, which shut down and filed for Chapter 7 bankruptcy in November 2025.
 
 ## Step One: Connect to WiFi
 
