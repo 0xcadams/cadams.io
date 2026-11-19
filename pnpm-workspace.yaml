@@ -1,6 +1,9 @@
 packages:
   - .
 
+overrides:
+  browserslist: 4.29.6
+
 allowBuilds:
   esbuild: true
   sharp: true
