@@ -1,6 +1,7 @@
 {
   "name": "cadams.io",
   "private": true,
+  "packageManager": "pnpm@11.28.7",
   "scripts": {
     "dev": "tnl dev",
     "build": "next build",
